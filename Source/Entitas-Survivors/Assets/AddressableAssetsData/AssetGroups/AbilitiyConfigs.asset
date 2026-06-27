@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: AbilitiyConfigs
+  m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
+  m_GroupName: AbilitiyConfigs
+  m_GUID: e44198796549d44bf9067aa3a5c763c7
+  m_SerializeEntries:
+  - m_GUID: 2ed02337de240b144924eb50c1469f6a
+    m_Address: VegetableBoltConfig
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AbilityConfig
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8130848e041e04051b9f4df2781deb42
+    m_Address: OrbitingMushroomConfig
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AbilityConfig
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b6524b0ea89d34dd7847069e5d0e0dfb
+    m_Address: EnergyOrbConfig
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AbilityConfig
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fae88ad666b2741829f789755019b9a0
+    m_Address: GarlicAuraConfig
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AbilityConfig
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 9510292c3e59a4eb2b568341a0302e80, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 6fda0ec3bbc8e4c0f8352371f6899b80, type: 2}
+    - {fileID: 11400000, guid: 600f7cece1ad44c22a86e12d6399a12a, type: 2}
