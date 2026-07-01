@@ -27,14 +27,26 @@ MonoBehaviour:
     m_SerializedLabels:
     - AbilityConfig
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 83890bb6e40a14b77abc37601537c38b
+    m_Address: ScatteringFireBallConfig
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AbilityConfig
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b6524b0ea89d34dd7847069e5d0e0dfb
-    m_Address: EnergyOrbConfig
+    m_Address: RadialEnergyOrbConfig
     m_ReadOnly: 0
     m_SerializedLabels:
     - AbilityConfig
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: fae88ad666b2741829f789755019b9a0
     m_Address: GarlicAuraConfig
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AbilityConfig
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fbb631aaac016480ea8a2339e65473aa
+    m_Address: BouncingRuneStoneConfig
     m_ReadOnly: 0
     m_SerializedLabels:
     - AbilityConfig

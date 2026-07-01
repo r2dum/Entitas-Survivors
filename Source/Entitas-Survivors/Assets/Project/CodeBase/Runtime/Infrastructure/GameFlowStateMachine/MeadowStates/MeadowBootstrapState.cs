@@ -1,5 +1,5 @@
 using CodeBase.Runtime.Gameplay.GameplayStaticData;
-using CodeBase.Runtime.Infrastructure.Debug.Log;
+using CodeBase.Runtime.Infrastructure.Debugs.Log;
 using CodeBase.Runtime.Infrastructure.StateMachine;
 
 namespace CodeBase.Runtime.Infrastructure.GameFlowStateMachine.MeadowStates

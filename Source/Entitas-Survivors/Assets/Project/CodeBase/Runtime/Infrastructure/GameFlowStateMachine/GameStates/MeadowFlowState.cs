@@ -1,4 +1,4 @@
-using CodeBase.Runtime.Infrastructure.Debug.Log;
+using CodeBase.Runtime.Infrastructure.Debugs.Log;
 using CodeBase.Runtime.Infrastructure.SceneLoading;
 using CodeBase.Runtime.Infrastructure.StateMachine;
 

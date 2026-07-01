@@ -5,7 +5,7 @@ namespace CodeBase.Runtime.Gameplay.Features.Enemies.Systems
 {
   public class EnemyDeathSystem : IExecuteSystem
   {
-    private const float DeathAnimationTime = 2;
+    private const float DeathAnimationTime = 1.5f;
 
     private readonly IGroup<GameEntity> _enemies;
 
@@ -26,6 +26,9 @@ namespace CodeBase.Runtime.Gameplay.Features.Enemies.Systems
         enemy.isTurnedAlongDirection = false;
 
         enemy.RemoveTargetCollectionComponents();
+
+        if (enemy.hasView)
+          enemy.View.ReleaseColliders();
 
         if (enemy.hasEnemyAnimator)
           enemy.EnemyAnimator.PlayDied();

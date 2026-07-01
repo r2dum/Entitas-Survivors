@@ -1,5 +1,5 @@
 using CodeBase.Runtime.Infrastructure.AssetManagement;
-using CodeBase.Runtime.Infrastructure.Debug.Log;
+using CodeBase.Runtime.Infrastructure.Debugs.Log;
 using CodeBase.Runtime.Infrastructure.StateMachine;
 
 namespace CodeBase.Runtime.Infrastructure.GameFlowStateMachine.GameStates

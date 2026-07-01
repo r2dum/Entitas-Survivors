@@ -7,6 +7,7 @@ namespace CodeBase.Runtime.Infrastructure.EntityView
     GameObject gameObject { get; }
     GameEntity Entity { get; }
     void SetEntity(GameEntity entity);
+    void ReleaseColliders();
     void ReleaseEntity();
   }
 }

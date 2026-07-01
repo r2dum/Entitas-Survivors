@@ -23,5 +23,11 @@ MonoBehaviour:
     ProjectileSetup:
       Speed: 2
       Pierce: 3
+      Bounce: 0
+      ProjectileCount: 1
       ContactRadius: 0.1
+      OrbitRadius: 0
       Lifetime: 3
+    AuraSetup:
+      Radius: 0
+      Interval: 0

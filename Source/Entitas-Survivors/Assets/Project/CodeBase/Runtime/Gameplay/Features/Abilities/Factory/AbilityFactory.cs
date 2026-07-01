@@ -30,15 +30,15 @@ namespace CodeBase.Runtime.Gameplay.Features.Abilities.Factory
         .PutOnCooldown();
     }
 
-    public GameEntity CreateEnergyOrb(int level)
+    public GameEntity CreateRadialEnergyOrb(int level)
     {
-      AbilityLevel abilityLevel = _staticDataService.GetAbilityLevel(AbilityId.EnergyOrb, level);
+      AbilityLevel abilityLevel = _staticDataService.GetAbilityLevel(AbilityId.RadialEnergyOrb, level);
 
       return CreateEntity.Empty()
         .AddId(_identifierService.Next())
-        .AddAbilityId(AbilityId.EnergyOrb)
+        .AddAbilityId(AbilityId.RadialEnergyOrb)
         .AddCooldown(abilityLevel.Cooldown)
-        .With(x => x.isEnergyOrbAbility = true)
+        .With(x => x.isRadialEnergyOrbAbility = true)
         .PutOnCooldown();
     }
 
@@ -54,15 +54,27 @@ namespace CodeBase.Runtime.Gameplay.Features.Abilities.Factory
         .PutOnCooldown();
     }
 
-    public GameEntity CreateBouncingHummerAbility(int level)
+    public GameEntity CreateBouncingRuneStoneAbility(int level)
     {
-      AbilityLevel abilityLevel = _staticDataService.GetAbilityLevel(AbilityId.BouncingHummer, level);
+      AbilityLevel abilityLevel = _staticDataService.GetAbilityLevel(AbilityId.BouncingRuneStone, level);
 
       return CreateEntity.Empty()
         .AddId(_identifierService.Next())
-        .AddAbilityId(AbilityId.BouncingHummer)
+        .AddAbilityId(AbilityId.BouncingRuneStone)
         .AddCooldown(abilityLevel.Cooldown)
-        .With(x => x.isBouncingHummerAbility = true)
+        .With(x => x.isBouncingRuneStoneAbility = true)
+        .PutOnCooldown();
+    }
+
+    public GameEntity CreateScatteringFireBallAbility(int level)
+    {
+      AbilityLevel abilityLevel = _staticDataService.GetAbilityLevel(AbilityId.ScatteringFireBall, level);
+
+      return CreateEntity.Empty()
+        .AddId(_identifierService.Next())
+        .AddAbilityId(AbilityId.ScatteringFireBall)
+        .AddCooldown(abilityLevel.Cooldown)
+        .With(x => x.isScatteringFireBallAbility = true)
         .PutOnCooldown();
     }
 

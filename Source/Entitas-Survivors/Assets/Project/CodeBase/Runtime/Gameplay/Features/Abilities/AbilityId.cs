@@ -6,7 +6,8 @@
     VegetableBolt = 1,
     OrbitingMushroom = 2,
     GarlicAura = 3,
-    EnergyOrb = 4,
-    BouncingHummer = 4
+    RadialEnergyOrb = 4,
+    BouncingRuneStone = 5,
+    ScatteringFireBall = 6,
   }
 }

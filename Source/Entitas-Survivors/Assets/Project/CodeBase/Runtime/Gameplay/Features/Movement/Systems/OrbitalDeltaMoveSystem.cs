@@ -37,5 +37,4 @@ namespace CodeBase.Runtime.Gameplay.Features.Movement.Systems
       }
     }
   }
-
 }

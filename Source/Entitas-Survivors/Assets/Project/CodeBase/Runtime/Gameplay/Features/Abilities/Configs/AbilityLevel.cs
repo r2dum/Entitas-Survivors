@@ -18,5 +18,7 @@ namespace CodeBase.Runtime.Gameplay.Features.Abilities.Configs
 
     public ProjectileSetup ProjectileSetup;
     public AuraSetup AuraSetup;
+
+    public ScatteringSetup ScatteringSetup;
   }
 }

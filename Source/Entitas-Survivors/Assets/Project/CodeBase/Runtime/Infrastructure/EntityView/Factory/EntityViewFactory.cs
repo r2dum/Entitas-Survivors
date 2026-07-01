@@ -16,7 +16,7 @@ namespace CodeBase.Runtime.Infrastructure.EntityView.Factory
     {
       EntityBehaviour view = _instantiator
         .InstantiatePrefabForComponent<EntityBehaviour>(entity.ViewPrefab, _farAwayPosition, Quaternion.identity, null);
-
+      view.gameObject.name = $"{entity.ViewPrefab.name} | Id:{entity.Id}";
       view.SetEntity(entity);
     }
   }

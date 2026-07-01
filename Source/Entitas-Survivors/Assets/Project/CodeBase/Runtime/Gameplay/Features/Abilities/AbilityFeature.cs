@@ -1,4 +1,4 @@
-using CodeBase.Runtime.Gameplay.Features.Abilities.System;
+using CodeBase.Runtime.Gameplay.Features.Abilities.Systems;
 using CodeBase.Runtime.Gameplay.Features.Cooldowns.Systems;
 using CodeBase.Runtime.Infrastructure.Systems;
 
@@ -12,8 +12,9 @@ namespace CodeBase.Runtime.Gameplay.Features.Abilities
 
       Add(systemFactory.Create<VegetableBoltAbilitySystem>());
       Add(systemFactory.Create<OrbitingMushroomAbilitySystem>());
-      Add(systemFactory.Create<EnergyOrbAbilitySystem>());
-      Add(systemFactory.Create<BouncingHummerAbilitySystem>());
+      Add(systemFactory.Create<RadialEnergyOrbAbilitySystem>());
+      Add(systemFactory.Create<BouncingRuneStoneAbilitySystem>());
+      Add(systemFactory.Create<ScatteringFireBallAbilitySystem>());
 
       Add(systemFactory.Create<GarlicAuraAbilitySystem>());
     }

@@ -27,6 +27,6 @@ namespace CodeBase.Runtime.Gameplay.Features.Movement.Systems
     }
 
     private float FaceDirection(GameEntity mover) =>
-      mover.Direction.x <= 0 ? -1 : 1;
+      mover.Direction.x <= 0f ? -1f : 1f;
   }
 }

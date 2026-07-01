@@ -7,6 +7,7 @@ namespace CodeBase.Runtime.Gameplay.Features.Abilities.Configs
   {
     public float Speed;
     public int Pierce = 1;
+    public int Bounce;
     public int ProjectileCount = 1;
     public float ContactRadius;
     public float OrbitRadius;

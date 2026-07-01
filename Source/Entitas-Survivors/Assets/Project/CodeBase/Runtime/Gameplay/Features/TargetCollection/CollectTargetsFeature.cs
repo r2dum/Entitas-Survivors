@@ -9,11 +9,14 @@ namespace CodeBase.Runtime.Gameplay.Features.TargetCollection
     {
       Add(systemFactory.Create<CollectTargetsIntervalSystem>());
 
-      Add(systemFactory.Create<CastForTargetsNoLimitSystem>());
-      Add(systemFactory.Create<CastForTargetsWithLimitSystem>());
+      Add(systemFactory.Create<CastForTargetsNoPierceLimitSystem>());
+      Add(systemFactory.Create<CastForTargetsWithPierceLimitSystem>());
+      Add(systemFactory.Create<CastForTargetsWithBounceLimitSystem>());
+
       Add(systemFactory.Create<MarkReachedSystem>());
 
       Add(systemFactory.Create<CleanupTargetBuffersSystem>());
+      Add(systemFactory.Create<CleanupReachedSystem>());
     }
   }
 }

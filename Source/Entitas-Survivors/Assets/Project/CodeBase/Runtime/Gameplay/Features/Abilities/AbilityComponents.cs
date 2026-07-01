@@ -8,7 +8,8 @@ namespace CodeBase.Runtime.Gameplay.Features.Abilities
   
   [Game] public class VegetableBoltAbility : IComponent { }
   [Game] public class OrbitingMushroomAbility : IComponent { }
-  [Game] public class EnergyOrbAbility : IComponent { }
-  [Game] public class BouncingHummerAbility : IComponent { }
+  [Game] public class RadialEnergyOrbAbility : IComponent { }
+  [Game] public class BouncingRuneStoneAbility : IComponent { }
+  [Game] public class ScatteringFireBallAbility : IComponent { }
   [Game] public class GarlicAuraAbility : IComponent { }
 }

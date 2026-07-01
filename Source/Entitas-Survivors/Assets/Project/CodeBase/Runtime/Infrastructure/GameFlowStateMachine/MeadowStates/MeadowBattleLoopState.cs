@@ -1,5 +1,5 @@
 using CodeBase.Runtime.Gameplay;
-using CodeBase.Runtime.Infrastructure.Debug.Log;
+using CodeBase.Runtime.Infrastructure.Debugs.Log;
 using CodeBase.Runtime.Infrastructure.StateMachine;
 using CodeBase.Runtime.Infrastructure.Systems;
 

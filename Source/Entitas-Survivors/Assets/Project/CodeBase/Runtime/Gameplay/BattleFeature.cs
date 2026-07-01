@@ -31,15 +31,15 @@ namespace CodeBase.Runtime.Gameplay
       Add(systemFactory.Create<MovementFeature>());
       Add(systemFactory.Create<AbilityFeature>());
 
-      Add(systemFactory.Create<ArmamentFeature>());
-
       Add(systemFactory.Create<CollectTargetsFeature>());
-      Add(systemFactory.Create<EffectApplicationFeature>());
 
+      Add(systemFactory.Create<EffectApplicationFeature>());
       Add(systemFactory.Create<EnchantFeature>());
       Add(systemFactory.Create<EffectFeature>());
       Add(systemFactory.Create<StatusFeature>());
       Add(systemFactory.Create<StatsFeature>());
+
+      Add(systemFactory.Create<ArmamentFeature>());
 
       Add(systemFactory.Create<ProcessDestructedFeature>());
     }

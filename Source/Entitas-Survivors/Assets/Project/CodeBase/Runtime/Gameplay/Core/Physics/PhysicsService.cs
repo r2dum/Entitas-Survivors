@@ -97,17 +97,22 @@ namespace CodeBase.Runtime.Gameplay.Core.Physics
 
       DrawDebug(worldPosition, radius, 1f, Color.green);
 
+      int addedCount = 0;
+
       for (int i = 0; i < hitCount; i++)
       {
         GameEntity entity = _collisionRegistry.Get<GameEntity>(OverlapHits[i].GetInstanceID());
         if (entity == null)
           continue;
 
-        if (i < hitBuffer.Length)
-          hitBuffer[i] = entity;
+        if (addedCount < hitBuffer.Length)
+        {
+          hitBuffer[addedCount] = entity;
+          addedCount++;
+        }
       }
 
-      return hitCount;
+      return addedCount;
     }
 
     public TEntity OverlapPoint<TEntity>(Vector2 worldPosition, int layerMask) where TEntity : class

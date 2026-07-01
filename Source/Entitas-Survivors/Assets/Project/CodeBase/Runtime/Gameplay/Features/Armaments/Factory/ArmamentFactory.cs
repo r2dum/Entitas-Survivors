@@ -34,13 +34,13 @@ namespace CodeBase.Runtime.Gameplay.Features.Armaments.Factory
         .With(x => x.isRotationAlignedAlongDirection = true);
     }
 
-    public GameEntity CreateEnergyOrb(int level, Vector3 at)
+    public GameEntity CreateRadialEnergyOrb(int level, Vector3 at)
     {
-      AbilityLevel abilityLevel = _staticDataService.GetAbilityLevel(AbilityId.EnergyOrb, level);
+      AbilityLevel abilityLevel = _staticDataService.GetAbilityLevel(AbilityId.RadialEnergyOrb, level);
       ProjectileSetup projectileSetup = abilityLevel.ProjectileSetup;
 
       return CreateProjectileEntity(at, abilityLevel, projectileSetup)
-        .AddParentAbility(AbilityId.EnergyOrb);
+        .AddParentAbility(AbilityId.RadialEnergyOrb);
     }
 
     public GameEntity CreateOrbitingMushroom(int level, Vector3 at, float phase)
@@ -54,13 +54,35 @@ namespace CodeBase.Runtime.Gameplay.Features.Armaments.Factory
         .AddOrbitRadius(projectileSetup.OrbitRadius);
     }
 
-    public GameEntity CreateBouncingHummer(int level, Vector3 at)
+    public GameEntity CreateBouncingRuneStone(int level, Vector3 at)
     {
-      AbilityLevel abilityLevel = _staticDataService.GetAbilityLevel(AbilityId.BouncingHummer, level);
+      AbilityLevel abilityLevel = _staticDataService.GetAbilityLevel(AbilityId.BouncingRuneStone, level);
       ProjectileSetup projectileSetup = abilityLevel.ProjectileSetup;
 
       return CreateProjectileEntity(at, abilityLevel, projectileSetup)
-        .AddParentAbility(AbilityId.BouncingHummer)
+        .AddParentAbility(AbilityId.BouncingRuneStone)
+        .AddTargetBounceLimit(projectileSetup.Bounce)
+        .With(x => x.isRotationAlignedAlongDirection = true);
+    }
+
+    public GameEntity CreateScatteringFireBall(int level, Vector3 at)
+    {
+      AbilityLevel abilityLevel = _staticDataService.GetAbilityLevel(AbilityId.ScatteringFireBall, level);
+      ProjectileSetup projectileSetup = abilityLevel.ProjectileSetup;
+
+      return CreateProjectileEntity(at, abilityLevel, projectileSetup)
+        .AddParentAbility(AbilityId.ScatteringFireBall)
+        .With(x => x.isScattering = true)
+        .With(x => x.isRotationAlignedAlongDirection = true);
+    }
+
+    public GameEntity CreateScatteringFireBallShard(int level, Vector3 at)
+    {
+      AbilityLevel abilityLevel = _staticDataService.GetAbilityLevel(AbilityId.ScatteringFireBall, level);
+      ScatteringSetup scatteringSetup = abilityLevel.ScatteringSetup;
+
+      return CreateProjectileEntity(at, scatteringSetup)
+        .AddParentAbility(AbilityId.ScatteringFireBall)
         .With(x => x.isRotationAlignedAlongDirection = true);
     }
 
@@ -114,9 +136,28 @@ namespace CodeBase.Runtime.Gameplay.Features.Armaments.Factory
         .AddProcessedTargets(new List<int>(TargetBufferSize))
         .AddLayerMask(CollisionLayer.Enemy.AsMask())
         .AddSelfDestructTimer(setup.Lifetime)
-        .With(x => x.AddTargetLimit(setup.Pierce), when: setup.Pierce > 0)
+        .With(x => x.AddTargetPierceLimit(setup.Pierce), when: setup.Pierce > 0)
         .With(x => x.AddEffectSetups(abilityLevel.EffectSetups), when: abilityLevel.EffectSetups.IsNullOrEmpty() == false)
         .With(x => x.AddStatusSetups(abilityLevel.StatusSetups), when: abilityLevel.StatusSetups.IsNullOrEmpty() == false)
+        .With(x => x.isArmament = true)
+        .With(x => x.isMovementAvailable = true)
+        .With(x => x.isReadyToCollectTargets = true)
+        .With(x => x.isCollectingTargetsContinuously = true);
+
+    private GameEntity CreateProjectileEntity(Vector3 at, ScatteringSetup setup) =>
+      CreateEntity.Empty()
+        .AddId(_identifierService.Next())
+        .AddViewPrefab(setup.ViewPrefab)
+        .AddWorldPosition(at)
+        .AddSpeed(setup.ProjectileSetup.Speed)
+        .AddRadius(setup.ProjectileSetup.ContactRadius)
+        .AddTargetBuffer(new List<int>(TargetBufferSize))
+        .AddProcessedTargets(new List<int>(TargetBufferSize))
+        .AddLayerMask(CollisionLayer.Enemy.AsMask())
+        .AddSelfDestructTimer(setup.ProjectileSetup.Lifetime)
+        .With(x => x.AddTargetPierceLimit(setup.ProjectileSetup.Pierce), when: setup.ProjectileSetup.Pierce > 0)
+        .With(x => x.AddEffectSetups(setup.EffectSetups), when: setup.EffectSetups.IsNullOrEmpty() == false)
+        .With(x => x.AddStatusSetups(setup.StatusSetups), when: setup.StatusSetups.IsNullOrEmpty() == false)
         .With(x => x.isArmament = true)
         .With(x => x.isMovementAvailable = true)
         .With(x => x.isReadyToCollectTargets = true)

@@ -3,9 +3,10 @@ namespace CodeBase.Runtime.Gameplay.Features.Abilities.Factory
   public interface IAbilityFactory
   {
     GameEntity CreateVegetableBoltAbility(int level);
-    GameEntity CreateEnergyOrb(int level);
+    GameEntity CreateRadialEnergyOrb(int level);
     GameEntity CreateOrbitingMushroomAbility(int level);
-    GameEntity CreateBouncingHummerAbility(int level);
+    GameEntity CreateBouncingRuneStoneAbility(int level);
+    GameEntity CreateScatteringFireBallAbility(int level);
     GameEntity CreateGarlicAuraAbility();
   }
 }

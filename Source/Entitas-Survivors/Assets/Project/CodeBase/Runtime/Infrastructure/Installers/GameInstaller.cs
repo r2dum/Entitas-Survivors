@@ -1,6 +1,6 @@
 using CodeBase.Runtime.Common.EntityIndices;
 using CodeBase.Runtime.Infrastructure.AssetManagement;
-using CodeBase.Runtime.Infrastructure.Debug;
+using CodeBase.Runtime.Infrastructure.Debugs;
 using CodeBase.Runtime.Infrastructure.EntityView;
 using CodeBase.Runtime.Infrastructure.GameFlowStateMachine;
 using CodeBase.Runtime.Infrastructure.GameFlowStateMachine.GameStates.Registrar;
