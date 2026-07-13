@@ -16,9 +16,37 @@ MonoBehaviour:
   m_GUID: 354ffe23580964fca93d9586b701c027
   m_SerializeEntries:
   - m_GUID: 5aa0f6aecef0da643b3ff98e1dc91c2e
-    m_Address: Enemy
+    m_Address: Goblin_Torch_Blue
     m_ReadOnly: 0
     m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 814ab4eb75f6341fbbb71a525c5669fc
+    m_Address: Goblin_Torch_Yellow
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ac5aa06218f8841888001f3690c19d85
+    m_Address: GoblinWarriorConfig
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - EnemyConfig
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c5540173e7c6c493287a0cded2658d59
+    m_Address: GoblinHealerConfig
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - EnemyConfig
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e5be98f95f46b4d2697c498ec16d03bb
+    m_Address: Goblin_Torch_Purple
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ed6fb0006ea4e47d4b6ae52a6f1b37c4
+    m_Address: GoblinSpeederConfig
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - EnemyConfig
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 9510292c3e59a4eb2b568341a0302e80, type: 2}

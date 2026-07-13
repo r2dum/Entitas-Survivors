@@ -8,10 +8,13 @@ namespace CodeBase.Runtime.Gameplay.Features.Statuses
     public StatusFeature(ISystemFactory systemFactory)
     {
       Add(systemFactory.Create<StatusDurationSystem>());
-      Add(systemFactory.Create<PeriodicDamageStatusSystem>());
-      Add(systemFactory.Create<ApplyFreezeStatusSystem>());
+      Add(systemFactory.Create<PeriodicPoisonDamageStatusSystem>());
+      Add(systemFactory.Create<ApplySpeedModifierStatusSystem>());
+      Add(systemFactory.Create<ApplyHealStatusSystem>());
 
       Add(systemFactory.Create<StatusVisualsFeature>());
+
+      Add(systemFactory.Create<UnapplyAffectedStatusesWithoutDurationSystem>());
 
       Add(systemFactory.Create<CleanupUnappliedStatusLinkedChanges>());
       Add(systemFactory.Create<CleanupUnappliedStatuses>());

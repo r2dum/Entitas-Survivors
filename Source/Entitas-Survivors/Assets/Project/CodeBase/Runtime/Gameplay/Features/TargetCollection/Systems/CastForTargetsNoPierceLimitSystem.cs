@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using CodeBase.Runtime.Gameplay.Core;
 using CodeBase.Runtime.Gameplay.Core.Physics;
 using Entitas;
 
@@ -39,6 +40,8 @@ namespace CodeBase.Runtime.Gameplay.Features.TargetCollection.Systems
     }
 
     private IEnumerable<int> TargetsInRadius(GameEntity entity) =>
-      _physicsService.CircleCast(entity.WorldPosition, entity.Radius, entity.LayerMask).Select(x => x.Id);
+      _physicsService.CircleCast(entity.WorldPosition, entity.Radius, entity.LayerMask)
+        .Select(x => x.Id)
+        .Where(entity.IsNotProducer);
   }
 }

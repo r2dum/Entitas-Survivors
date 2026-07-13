@@ -2,7 +2,6 @@
 
 namespace CodeBase.Runtime.Gameplay.Features.Effects
 {
-  [Game] public class ProducerId : IComponent { public int Value; }
   [Game] public class TargetId : IComponent { public int Value; }
   [Game] public class EffectValue : IComponent { public float Value; }
   

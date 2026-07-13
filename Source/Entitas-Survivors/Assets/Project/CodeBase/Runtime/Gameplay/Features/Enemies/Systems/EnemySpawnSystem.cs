@@ -1,8 +1,11 @@
+using System.Collections.Generic;
 using CodeBase.Runtime.Common.Extensions;
 using CodeBase.Runtime.Gameplay.Cameras.Provider;
 using CodeBase.Runtime.Gameplay.Core;
 using CodeBase.Runtime.Gameplay.Core.Time;
+using CodeBase.Runtime.Gameplay.Features.Enemies.Configs;
 using CodeBase.Runtime.Gameplay.Features.Enemies.Factory;
+using CodeBase.Runtime.Gameplay.GameplayStaticData;
 using Entitas;
 using UnityEngine;
 
@@ -15,16 +18,18 @@ namespace CodeBase.Runtime.Gameplay.Features.Enemies.Systems
     private readonly ITimeService _timeService;
     private readonly IEnemyFactory _enemyFactory;
     private readonly ICameraProvider _cameraProvider;
+    private readonly IGameplayStaticDataService _staticDataService;
 
     private readonly IGroup<GameEntity> _timers;
     private readonly IGroup<GameEntity> _heroes;
 
     public EnemySpawnSystem(GameContext gameContext, ITimeService timeService,
-      IEnemyFactory enemyFactory, ICameraProvider cameraProvider)
+      IEnemyFactory enemyFactory, ICameraProvider cameraProvider, IGameplayStaticDataService staticDataService)
     {
       _timeService = timeService;
       _enemyFactory = enemyFactory;
       _cameraProvider = cameraProvider;
+      _staticDataService = staticDataService;
 
       _timers = gameContext.GetGroup(GameMatcher.SpawnTimer);
       _heroes = gameContext.GetGroup(GameMatcher
@@ -42,9 +47,35 @@ namespace CodeBase.Runtime.Gameplay.Features.Enemies.Systems
         if (timer.SpawnTimer <= 0)
         {
           timer.ReplaceSpawnTimer(GameplayConstants.EnemySpawnTimer);
-          _enemyFactory.CreateEnemy(EnemyTypeId.Goblin, at: RandomSpawnPosition(hero.WorldPosition));
+          EnemyTypeId selectedEnemyType = SelectEnemyTypeBySpawnWeight();
+          _enemyFactory.CreateEnemy(selectedEnemyType, at: RandomSpawnPosition(hero.WorldPosition));
         }
       }
+    }
+
+    private EnemyTypeId SelectEnemyTypeBySpawnWeight()
+    {
+      float totalWeight = 0f;
+
+      List<EnemyConfig> enemyConfigs = _staticDataService.GetEnemyConfigs();
+
+      foreach (EnemyConfig enemyConfig in enemyConfigs)
+        totalWeight += enemyConfig.SpawnWeight;
+
+      if (totalWeight == 0f)
+        return EnemyTypeId.GoblinWarrior;
+
+      float randomWeightPoint = Random.Range(0f, totalWeight);
+      float accumulatedWeight = 0f;
+
+      foreach (EnemyConfig enemyConfig in enemyConfigs)
+      {
+        accumulatedWeight += enemyConfig.SpawnWeight;
+        if (randomWeightPoint < accumulatedWeight)
+          return enemyConfig.TypeId;
+      }
+
+      return EnemyTypeId.GoblinWarrior;
     }
 
     private Vector2 RandomSpawnPosition(Vector2 heroWorldPosition)

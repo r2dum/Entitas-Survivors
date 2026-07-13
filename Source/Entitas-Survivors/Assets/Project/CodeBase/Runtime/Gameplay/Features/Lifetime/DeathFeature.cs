@@ -8,6 +8,8 @@ namespace CodeBase.Runtime.Gameplay.Features.Lifetime
     public DeathFeature(ISystemFactory systemFactory)
     {
       Add(systemFactory.Create<MarkDeadSystem>());
+      Add(systemFactory.Create<MarkOrphanProducersDestructedSystem>());
+
       Add(systemFactory.Create<UnapplyStatusesOfDeadTargetSystem>());
     }
   }

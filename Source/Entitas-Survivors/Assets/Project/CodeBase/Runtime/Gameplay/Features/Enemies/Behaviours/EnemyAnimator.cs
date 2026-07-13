@@ -1,4 +1,5 @@
 ﻿using CodeBase.Runtime.Gameplay.Core.Visuals;
+using CodeBase.Runtime.Gameplay.Core.Visuals.Appearance;
 using DG.Tweening;
 using UnityEngine;
 
@@ -9,28 +10,43 @@ namespace CodeBase.Runtime.Gameplay.Features.Enemies.Behaviours
     private static readonly int OverlayIntensityProperty = Shader.PropertyToID("_OverlayIntensity");
     private readonly int _diedHash = Animator.StringToHash("died");
 
-    [SerializeField] private Animator _animator;
-    [SerializeField] private SpriteRenderer _spriteRenderer;
+    [SerializeField] private AppearanceVisuals _appearanceVisuals;
 
-    private Material Material => _spriteRenderer.material;
+    private MaterialPropertyBlock _materialPropertyBlock;
+    private float _overlayIntensity;
+
+    private void Awake() =>
+      _materialPropertyBlock = new MaterialPropertyBlock();
 
     public void PlayDied() =>
-      _animator.SetTrigger(_diedHash);
+      _appearanceVisuals.Animator.SetTrigger(_diedHash);
 
     public void PlayDamageTaken()
     {
-      if (DOTween.IsTweening(Material))
-        return;
+      DOTween.Kill(this);
 
-      Material.DOFloat(0.4f, OverlayIntensityProperty, 0.15f)
+      DOTween.To(() => _overlayIntensity, x => _overlayIntensity = x, 0.4f, 0.15f)
+        .OnUpdate(ApplyOverlay)
         .OnComplete(() =>
         {
-          if (_spriteRenderer)
-            Material.DOFloat(0, OverlayIntensityProperty, 0.15f);
-        });
+          DOTween.To(() => _overlayIntensity, x => _overlayIntensity = x, 0f, 0.15f)
+            .OnUpdate(ApplyOverlay);
+        })
+        .SetTarget(this);
     }
 
-    public void ResetAll() =>
-      _animator.ResetTrigger(_diedHash);
+    public void ResetAll()
+    {
+      _appearanceVisuals.Animator.ResetTrigger(_diedHash);
+      _overlayIntensity = 0f;
+      ApplyOverlay();
+    }
+
+    private void ApplyOverlay()
+    {
+      _appearanceVisuals.Renderer.GetPropertyBlock(_materialPropertyBlock);
+      _materialPropertyBlock.SetFloat(OverlayIntensityProperty, _overlayIntensity);
+      _appearanceVisuals.Renderer.SetPropertyBlock(_materialPropertyBlock);
+    }
   }
 }

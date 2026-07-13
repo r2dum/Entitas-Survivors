@@ -16,6 +16,7 @@ namespace CodeBase.Runtime.Gameplay.Features.Abilities.Systems
     public GarlicAuraAbilitySystem(GameContext gameContext, IArmamentFactory armamentFactory)
     {
       _armamentFactory = armamentFactory;
+
       _abilities = gameContext.GetGroup(GameMatcher
         .AllOf(GameMatcher.GarlicAuraAbility)
         .NoneOf(GameMatcher.Active));
@@ -31,7 +32,7 @@ namespace CodeBase.Runtime.Gameplay.Features.Abilities.Systems
       foreach (GameEntity ability in _abilities.GetEntities(_buffer))
       foreach (GameEntity hero in _heroes)
       {
-        _armamentFactory.CreateEffectAura(AbilityId.GarlicAura, hero.Id, 1);
+        _armamentFactory.CreateGarlicAura(AbilityId.GarlicAura, hero.Id, 1);
         ability.isActive = true;
       }
     }

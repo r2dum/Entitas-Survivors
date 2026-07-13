@@ -4,8 +4,11 @@ using CodeBase.Runtime.Common.Entity;
 using CodeBase.Runtime.Common.Extensions;
 using CodeBase.Runtime.Gameplay.Features.Abilities;
 using CodeBase.Runtime.Gameplay.Features.Abilities.Configs;
+using CodeBase.Runtime.Gameplay.Features.Effects;
 using CodeBase.Runtime.Gameplay.Features.Enchants;
+using CodeBase.Runtime.Gameplay.Features.Statuses;
 using CodeBase.Runtime.Gameplay.GameplayStaticData;
+using CodeBase.Runtime.Infrastructure.EntityView;
 using CodeBase.Runtime.Infrastructure.Identifiers;
 using UnityEngine;
 
@@ -29,7 +32,8 @@ namespace CodeBase.Runtime.Gameplay.Features.Armaments.Factory
       AbilityLevel abilityLevel = _staticDataService.GetAbilityLevel(AbilityId.VegetableBolt, level);
       ProjectileSetup projectileSetup = abilityLevel.ProjectileSetup;
 
-      return CreateProjectileEntity(at, abilityLevel, projectileSetup)
+      return CreateProjectileEntity(at, abilityLevel.ViewPrefab, projectileSetup,
+          abilityLevel.EffectSetups, abilityLevel.StatusSetups)
         .AddParentAbility(AbilityId.VegetableBolt)
         .With(x => x.isRotationAlignedAlongDirection = true);
     }
@@ -39,7 +43,8 @@ namespace CodeBase.Runtime.Gameplay.Features.Armaments.Factory
       AbilityLevel abilityLevel = _staticDataService.GetAbilityLevel(AbilityId.RadialEnergyOrb, level);
       ProjectileSetup projectileSetup = abilityLevel.ProjectileSetup;
 
-      return CreateProjectileEntity(at, abilityLevel, projectileSetup)
+      return CreateProjectileEntity(at, abilityLevel.ViewPrefab, projectileSetup,
+          abilityLevel.EffectSetups, abilityLevel.StatusSetups)
         .AddParentAbility(AbilityId.RadialEnergyOrb);
     }
 
@@ -48,7 +53,8 @@ namespace CodeBase.Runtime.Gameplay.Features.Armaments.Factory
       AbilityLevel abilityLevel = _staticDataService.GetAbilityLevel(AbilityId.OrbitingMushroom, level);
       ProjectileSetup projectileSetup = abilityLevel.ProjectileSetup;
 
-      return CreateProjectileEntity(at, abilityLevel, projectileSetup)
+      return CreateProjectileEntity(at, abilityLevel.ViewPrefab, projectileSetup,
+          abilityLevel.EffectSetups, abilityLevel.StatusSetups)
         .AddParentAbility(AbilityId.OrbitingMushroom)
         .AddOrbitPhase(phase)
         .AddOrbitRadius(projectileSetup.OrbitRadius);
@@ -59,7 +65,8 @@ namespace CodeBase.Runtime.Gameplay.Features.Armaments.Factory
       AbilityLevel abilityLevel = _staticDataService.GetAbilityLevel(AbilityId.BouncingRuneStone, level);
       ProjectileSetup projectileSetup = abilityLevel.ProjectileSetup;
 
-      return CreateProjectileEntity(at, abilityLevel, projectileSetup)
+      return CreateProjectileEntity(at, abilityLevel.ViewPrefab, projectileSetup,
+          abilityLevel.EffectSetups, abilityLevel.StatusSetups)
         .AddParentAbility(AbilityId.BouncingRuneStone)
         .AddTargetBounceLimit(projectileSetup.Bounce)
         .With(x => x.isRotationAlignedAlongDirection = true);
@@ -70,7 +77,8 @@ namespace CodeBase.Runtime.Gameplay.Features.Armaments.Factory
       AbilityLevel abilityLevel = _staticDataService.GetAbilityLevel(AbilityId.ScatteringFireBall, level);
       ProjectileSetup projectileSetup = abilityLevel.ProjectileSetup;
 
-      return CreateProjectileEntity(at, abilityLevel, projectileSetup)
+      return CreateProjectileEntity(at, abilityLevel.ViewPrefab, projectileSetup,
+          abilityLevel.EffectSetups, abilityLevel.StatusSetups)
         .AddParentAbility(AbilityId.ScatteringFireBall)
         .With(x => x.isScattering = true)
         .With(x => x.isRotationAlignedAlongDirection = true);
@@ -81,30 +89,31 @@ namespace CodeBase.Runtime.Gameplay.Features.Armaments.Factory
       AbilityLevel abilityLevel = _staticDataService.GetAbilityLevel(AbilityId.ScatteringFireBall, level);
       ScatteringSetup scatteringSetup = abilityLevel.ScatteringSetup;
 
-      return CreateProjectileEntity(at, scatteringSetup)
+      return CreateProjectileEntity(at, scatteringSetup.ViewPrefab, scatteringSetup.ProjectileSetup,
+          scatteringSetup.EffectSetups, scatteringSetup.StatusSetups)
         .AddParentAbility(AbilityId.ScatteringFireBall)
         .With(x => x.isRotationAlignedAlongDirection = true);
     }
 
-    public GameEntity CreateEffectAura(AbilityId parentAbilityId, int producerId, int level)
+    public GameEntity CreateGarlicAura(AbilityId parentAbilityId, int producerId, int level)
     {
       AbilityLevel abilityLevel = _staticDataService.GetAbilityLevel(AbilityId.GarlicAura, level);
       AuraSetup auraSetup = abilityLevel.AuraSetup;
+      return CreateAuraEntity(parentAbilityId, producerId, abilityLevel, auraSetup);
+    }
 
-      return CreateEntity.Empty()
-        .AddId(_identifierService.Next())
-        .AddParentAbility(parentAbilityId)
-        .AddProducerId(producerId)
-        .AddViewPrefab(abilityLevel.ViewPrefab)
-        .AddWorldPosition(Vector3.zero)
-        .AddLayerMask(CollisionLayer.Enemy.AsMask())
-        .AddRadius(auraSetup.Radius)
-        .AddCollectTargetsInterval(auraSetup.Interval)
-        .AddCollectTargetsTimer(0f)
-        .AddTargetBuffer(new List<int>(TargetBufferSize))
-        .With(x => x.AddEffectSetups(abilityLevel.EffectSetups), when: abilityLevel.EffectSetups.IsNullOrEmpty() == false)
-        .With(x => x.AddStatusSetups(abilityLevel.StatusSetups), when: abilityLevel.StatusSetups.IsNullOrEmpty() == false)
-        .With(x => x.isFollowingProducer = true);
+    public GameEntity CreateHealAura(AbilityId parentAbilityId, int producerId, int level)
+    {
+      AbilityLevel abilityLevel = _staticDataService.GetAbilityLevel(AbilityId.HealAura, level);
+      AuraSetup auraSetup = abilityLevel.AuraSetup;
+      return CreateAuraEntity(parentAbilityId, producerId, abilityLevel, auraSetup);
+    }
+
+    public GameEntity CreateSpeedUpAura(AbilityId parentAbilityId, int producerId, int level)
+    {
+      AbilityLevel abilityLevel = _staticDataService.GetAbilityLevel(AbilityId.SpeedUpAura, level);
+      AuraSetup auraSetup = abilityLevel.AuraSetup;
+      return CreateAuraEntity(parentAbilityId, producerId, abilityLevel, auraSetup);
     }
 
     public GameEntity CreateExplosion(int producerId, Vector3 at)
@@ -125,42 +134,44 @@ namespace CodeBase.Runtime.Gameplay.Features.Armaments.Factory
         .With(x => x.isReadyToCollectTargets = true);
     }
 
-    private GameEntity CreateProjectileEntity(Vector3 at, AbilityLevel abilityLevel, ProjectileSetup setup) =>
-      CreateEntity.Empty()
+    private GameEntity CreateProjectileEntity(Vector3 at, EntityBehaviour viewPrefab, ProjectileSetup projectileSetup,
+      List<EffectSetup> effectSetups, List<StatusSetup> statusSetups)
+    {
+      return CreateEntity.Empty()
         .AddId(_identifierService.Next())
-        .AddViewPrefab(abilityLevel.ViewPrefab)
+        .AddViewPrefab(viewPrefab)
         .AddWorldPosition(at)
-        .AddSpeed(setup.Speed)
-        .AddRadius(setup.ContactRadius)
+        .AddSpeed(projectileSetup.Speed)
+        .AddRadius(projectileSetup.ContactRadius)
         .AddTargetBuffer(new List<int>(TargetBufferSize))
         .AddProcessedTargets(new List<int>(TargetBufferSize))
         .AddLayerMask(CollisionLayer.Enemy.AsMask())
-        .AddSelfDestructTimer(setup.Lifetime)
-        .With(x => x.AddTargetPierceLimit(setup.Pierce), when: setup.Pierce > 0)
+        .AddSelfDestructTimer(projectileSetup.Lifetime)
+        .With(x => x.AddTargetPierceLimit(projectileSetup.Pierce), when: projectileSetup.Pierce > 0)
+        .With(x => x.AddEffectSetups(effectSetups), when: effectSetups.IsNullOrEmpty() == false)
+        .With(x => x.AddStatusSetups(statusSetups), when: statusSetups.IsNullOrEmpty() == false)
+        .With(x => x.isArmament = true)
+        .With(x => x.isMovementAvailable = true)
+        .With(x => x.isReadyToCollectTargets = true)
+        .With(x => x.isCollectingTargetsContinuously = true);
+    }
+
+    private GameEntity CreateAuraEntity(AbilityId parentAbilityId, int producerId, AbilityLevel abilityLevel, AuraSetup auraSetup)
+    {
+      return CreateEntity.Empty()
+        .AddId(_identifierService.Next())
+        .AddParentAbility(parentAbilityId)
+        .AddProducerId(producerId)
+        .AddViewPrefab(abilityLevel.ViewPrefab)
+        .AddWorldPosition(Vector3.zero)
+        .AddLayerMask(CollisionLayer.Enemy.AsMask())
+        .AddRadius(auraSetup.Radius)
+        .AddCollectTargetsInterval(auraSetup.Interval)
+        .AddCollectTargetsTimer(0f)
+        .AddTargetBuffer(new List<int>(TargetBufferSize))
         .With(x => x.AddEffectSetups(abilityLevel.EffectSetups), when: abilityLevel.EffectSetups.IsNullOrEmpty() == false)
         .With(x => x.AddStatusSetups(abilityLevel.StatusSetups), when: abilityLevel.StatusSetups.IsNullOrEmpty() == false)
-        .With(x => x.isArmament = true)
-        .With(x => x.isMovementAvailable = true)
-        .With(x => x.isReadyToCollectTargets = true)
-        .With(x => x.isCollectingTargetsContinuously = true);
-
-    private GameEntity CreateProjectileEntity(Vector3 at, ScatteringSetup setup) =>
-      CreateEntity.Empty()
-        .AddId(_identifierService.Next())
-        .AddViewPrefab(setup.ViewPrefab)
-        .AddWorldPosition(at)
-        .AddSpeed(setup.ProjectileSetup.Speed)
-        .AddRadius(setup.ProjectileSetup.ContactRadius)
-        .AddTargetBuffer(new List<int>(TargetBufferSize))
-        .AddProcessedTargets(new List<int>(TargetBufferSize))
-        .AddLayerMask(CollisionLayer.Enemy.AsMask())
-        .AddSelfDestructTimer(setup.ProjectileSetup.Lifetime)
-        .With(x => x.AddTargetPierceLimit(setup.ProjectileSetup.Pierce), when: setup.ProjectileSetup.Pierce > 0)
-        .With(x => x.AddEffectSetups(setup.EffectSetups), when: setup.EffectSetups.IsNullOrEmpty() == false)
-        .With(x => x.AddStatusSetups(setup.StatusSetups), when: setup.StatusSetups.IsNullOrEmpty() == false)
-        .With(x => x.isArmament = true)
-        .With(x => x.isMovementAvailable = true)
-        .With(x => x.isReadyToCollectTargets = true)
-        .With(x => x.isCollectingTargetsContinuously = true);
+        .With(x => x.isFollowingProducer = true);
+    }
   }
 }

@@ -3,6 +3,8 @@
   public enum EnemyTypeId
   {
     Unknown = 0,
-    Goblin = 1,
+    GoblinWarrior = 1,
+    GoblinHealer = 2,
+    GoblinSpeeder = 3
   }
 }

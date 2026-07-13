@@ -12,4 +12,6 @@ namespace CodeBase.Runtime.Gameplay.Features.Abilities
   [Game] public class BouncingRuneStoneAbility : IComponent { }
   [Game] public class ScatteringFireBallAbility : IComponent { }
   [Game] public class GarlicAuraAbility : IComponent { }
+  [Game] public class HealAuraAbility : IComponent { }
+  [Game] public class SpeedUpAuraAbility : IComponent { }
 }

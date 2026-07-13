@@ -1,4 +1,5 @@
 using CodeBase.Runtime.Common.EntityIndices;
+using CodeBase.Runtime.Gameplay.Core.Visuals.Appearance;
 using CodeBase.Runtime.Infrastructure.AssetManagement;
 using CodeBase.Runtime.Infrastructure.Debugs;
 using CodeBase.Runtime.Infrastructure.EntityView;
@@ -23,6 +24,7 @@ namespace CodeBase.Runtime.Infrastructure.Installers
       EntityIndicesInstaller.Install(Container);
       EntityViewInstaller.Install(Container);
       StateFactoryInstaller.Install(Container);
+      AppearanceVisualsInstaller.Install(Container);
       GameStatesRegistrarInstaller.Install(Container);
       GameFlowStateMachineInstaller.Install(Container);
     }

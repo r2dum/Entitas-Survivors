@@ -33,21 +33,21 @@ public sealed partial class GameMatcher {
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public CodeBase.Runtime.Gameplay.Core.StatusVisualsComponent statusVisuals { get { return (CodeBase.Runtime.Gameplay.Core.StatusVisualsComponent)GetComponent(GameComponentsLookup.StatusVisuals); } }
-    public CodeBase.Runtime.Gameplay.Core.Visuals.StatusVisuals.IStatusVisuals StatusVisuals { get { return statusVisuals.Value; } }
+    public CodeBase.Runtime.Gameplay.Features.Statuses.StatusVisualsComponent statusVisuals { get { return (CodeBase.Runtime.Gameplay.Features.Statuses.StatusVisualsComponent)GetComponent(GameComponentsLookup.StatusVisuals); } }
+    public CodeBase.Runtime.Gameplay.Core.Visuals.Status.IStatusVisuals StatusVisuals { get { return statusVisuals.Value; } }
     public bool hasStatusVisuals { get { return HasComponent(GameComponentsLookup.StatusVisuals); } }
 
-    public GameEntity AddStatusVisuals(CodeBase.Runtime.Gameplay.Core.Visuals.StatusVisuals.IStatusVisuals newValue) {
+    public GameEntity AddStatusVisuals(CodeBase.Runtime.Gameplay.Core.Visuals.Status.IStatusVisuals newValue) {
         var index = GameComponentsLookup.StatusVisuals;
-        var component = (CodeBase.Runtime.Gameplay.Core.StatusVisualsComponent)CreateComponent(index, typeof(CodeBase.Runtime.Gameplay.Core.StatusVisualsComponent));
+        var component = (CodeBase.Runtime.Gameplay.Features.Statuses.StatusVisualsComponent)CreateComponent(index, typeof(CodeBase.Runtime.Gameplay.Features.Statuses.StatusVisualsComponent));
         component.Value = newValue;
         AddComponent(index, component);
         return this;
     }
 
-    public GameEntity ReplaceStatusVisuals(CodeBase.Runtime.Gameplay.Core.Visuals.StatusVisuals.IStatusVisuals newValue) {
+    public GameEntity ReplaceStatusVisuals(CodeBase.Runtime.Gameplay.Core.Visuals.Status.IStatusVisuals newValue) {
         var index = GameComponentsLookup.StatusVisuals;
-        var component = (CodeBase.Runtime.Gameplay.Core.StatusVisualsComponent)CreateComponent(index, typeof(CodeBase.Runtime.Gameplay.Core.StatusVisualsComponent));
+        var component = (CodeBase.Runtime.Gameplay.Features.Statuses.StatusVisualsComponent)CreateComponent(index, typeof(CodeBase.Runtime.Gameplay.Features.Statuses.StatusVisualsComponent));
         component.Value = newValue;
         ReplaceComponent(index, component);
         return this;

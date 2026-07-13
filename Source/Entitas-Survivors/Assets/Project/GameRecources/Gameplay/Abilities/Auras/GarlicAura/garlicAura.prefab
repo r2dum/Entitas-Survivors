@@ -9727,7 +9727,7 @@ GameObject:
   - component: {fileID: 5776008095014193973}
   - component: {fileID: 1599136322758968502}
   m_Layer: 0
-  m_Name: garlicAura
+  m_Name: GarlicAura
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -24,11 +24,23 @@ namespace CodeBase.Runtime.Gameplay.Features.Statuses.Factory
         case StatusTypeId.Freeze:
           status = CreateFreezeStatus(setup, producerId, targetId);
           break;
+        case StatusTypeId.Heal:
+          status = CreateHealStatus(setup, producerId, targetId);
+          break;
+        case StatusTypeId.SpeedModifier:
+          status = CreateSpeedModifierStatus(setup, producerId, targetId);
+          break;
+        case StatusTypeId.SheepHex:
+          status = CreateSheepHexStatus(setup, producerId, targetId);
+          break;
         case StatusTypeId.PoisonEnchant:
           status = CreatePoisonEnchantStatus(setup, producerId, targetId);
           break;
         case StatusTypeId.ExplosiveEnchant:
           status = CreateExplosiveEnchantStatus(setup, producerId, targetId);
+          break;
+        case StatusTypeId.SheepHexEnchant:
+          status = CreateSheepHexEnchantStatus(setup, producerId, targetId);
           break;
         default:
           throw new Exception($"Status with type id {setup.StatusTypeId} does not exist");
@@ -38,11 +50,11 @@ namespace CodeBase.Runtime.Gameplay.Features.Statuses.Factory
         .With(x => x.AddDuration(setup.Duration), when: setup.Duration > 0)
         .With(x => x.AddTimeLeft(setup.Duration), when: setup.Duration > 0)
         .With(x => x.AddPeriod(setup.Period), when: setup.Period > 0)
-        .With(x => x.AddTimeSinceLastTick(0), when: setup.Period > 0);
+        .With(x => x.AddTimeSinceLastTick(0), when: setup.Period > 0)
+        .With(x => x.AddAppearanceSkin(setup.AppearanceSkin), when: setup.AppearanceSkin != null);
 
       return status;
     }
-
 
     private GameEntity CreatePoisonStatus(StatusSetup setup, int producerId, int targetId)
     {
@@ -65,7 +77,44 @@ namespace CodeBase.Runtime.Gameplay.Features.Statuses.Factory
         .AddProducerId(producerId)
         .AddTargetId(targetId)
         .With(x => x.isStatus = true)
-        .With(x => x.isFreeze = true);
+        .With(x => x.isFreeze = true)
+        .With(x => x.isSpeedModifier = true);
+    }
+
+    private GameEntity CreateHealStatus(StatusSetup setup, int producerId, int targetId)
+    {
+      return CreateEntity.Empty()
+        .AddId(_identifierService.Next())
+        .AddStatusTypeId(StatusTypeId.Heal)
+        .AddEffectValue(setup.Value)
+        .AddProducerId(producerId)
+        .AddTargetId(targetId)
+        .With(x => x.isStatus = true)
+        .With(x => x.isHeal = true);
+    }
+
+    private GameEntity CreateSpeedModifierStatus(StatusSetup setup, int producerId, int targetId)
+    {
+      return CreateEntity.Empty()
+        .AddId(_identifierService.Next())
+        .AddStatusTypeId(StatusTypeId.SpeedModifier)
+        .AddEffectValue(setup.Value)
+        .AddProducerId(producerId)
+        .AddTargetId(targetId)
+        .With(x => x.isStatus = true)
+        .With(x => x.isSpeedModifier = true);
+    }
+
+    private GameEntity CreateSheepHexStatus(StatusSetup setup, int producerId, int targetId)
+    {
+      return CreateEntity.Empty()
+        .AddId(_identifierService.Next())
+        .AddStatusTypeId(StatusTypeId.SheepHex)
+        .AddEffectValue(setup.Value)
+        .AddProducerId(producerId)
+        .AddTargetId(targetId)
+        .With(x => x.isStatus = true)
+        .With(x => x.isSheepHex = true);
     }
 
     private GameEntity CreatePoisonEnchantStatus(StatusSetup setup, int producerId, int targetId)
@@ -92,6 +141,19 @@ namespace CodeBase.Runtime.Gameplay.Features.Statuses.Factory
         .AddTargetId(targetId)
         .With(x => x.isStatus = true)
         .With(x => x.isExplosiveEnchant = true);
+    }
+
+    private GameEntity CreateSheepHexEnchantStatus(StatusSetup setup, int producerId, int targetId)
+    {
+      return CreateEntity.Empty()
+        .AddId(_identifierService.Next())
+        .AddStatusTypeId(StatusTypeId.SheepHexEnchant)
+        .AddEnchantTypeId(EnchantTypeId.SheepHexArmaments)
+        .AddEffectValue(setup.Value)
+        .AddProducerId(producerId)
+        .AddTargetId(targetId)
+        .With(x => x.isStatus = true)
+        .With(x => x.isSheepHexEnchant = true);
     }
   }
 }

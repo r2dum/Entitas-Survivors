@@ -5,6 +5,8 @@ using CodeBase.Runtime.Common;
 using CodeBase.Runtime.Gameplay.Features.Abilities;
 using CodeBase.Runtime.Gameplay.Features.Abilities.Configs;
 using CodeBase.Runtime.Gameplay.Features.Enchants;
+using CodeBase.Runtime.Gameplay.Features.Enemies;
+using CodeBase.Runtime.Gameplay.Features.Enemies.Configs;
 using CodeBase.Runtime.Infrastructure.AssetManagement;
 using Cysharp.Threading.Tasks;
 
@@ -14,6 +16,7 @@ namespace CodeBase.Runtime.Gameplay.GameplayStaticData
   {
     private readonly IAssetProvider _assetProvider;
 
+    private Dictionary<EnemyTypeId, EnemyConfig> _enemyById;
     private Dictionary<AbilityId, AbilityConfig> _abilityById;
     private Dictionary<EnchantTypeId, EnchantConfig> _enchantById;
 
@@ -24,6 +27,7 @@ namespace CodeBase.Runtime.Gameplay.GameplayStaticData
     {
       await LoadAbilities();
       await LoadEnchants();
+      await LoadEnemies();
     }
 
     public AbilityConfig GetAbilityConfig(AbilityId abilityId)
@@ -52,6 +56,28 @@ namespace CodeBase.Runtime.Gameplay.GameplayStaticData
       throw new Exception($"Enchant config for {typeId} was not found");
     }
 
+    public EnemyConfig GetEnemyConfig(EnemyTypeId typeId)
+    {
+      if (_enemyById.TryGetValue(typeId, out EnemyConfig config))
+        return config;
+
+      throw new Exception($"Enemy config for {typeId} was not found");
+    }
+
+    public List<EnemyConfig> GetEnemyConfigs()
+    {
+      if (_enemyById.Count > 0)
+        return new List<EnemyConfig>(_enemyById.Values);
+
+      throw new Exception("Enemy configs was not found");
+    }
+
+    private async UniTask LoadEnemies()
+    {
+      EnemyConfig[] enemyConfigs = await GetConfigs<EnemyConfig>(AssetLabel.EnemyConfig);
+      _enemyById = enemyConfigs.ToDictionary(c => c.TypeId, c => c);
+    }
+
     private async UniTask LoadAbilities()
     {
       AbilityConfig[] abilityConfigs = await GetConfigs<AbilityConfig>(AssetLabel.AbilityConfig);
@@ -66,11 +92,8 @@ namespace CodeBase.Runtime.Gameplay.GameplayStaticData
 
     private async UniTask<TConfig[]> GetConfigs<TConfig>(string labelKey) where TConfig : class
     {
-      List<string> keys = await GetConfigKeys<TConfig>(labelKey);
+      List<string> keys = await _assetProvider.GetAssetsListByLabel<TConfig>(labelKey);
       return await _assetProvider.LoadAll<TConfig>(keys);
     }
-
-    private async UniTask<List<string>> GetConfigKeys<TConfig>(string labelKey) =>
-      await _assetProvider.GetAssetsListByLabel<TConfig>(labelKey);
   }
 }

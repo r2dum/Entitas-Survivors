@@ -21,6 +21,18 @@ MonoBehaviour:
     m_SerializedLabels:
     - AbilityConfig
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 32e27967daa4e45fb9232de9a1d4b27f
+    m_Address: SpeedUpAuraConfig
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AbilityConfig
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6a9649a80290d46bca417986a01efb44
+    m_Address: HealAuraConfig
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AbilityConfig
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 8130848e041e04051b9f4df2781deb42
     m_Address: OrbitingMushroomConfig
     m_ReadOnly: 0

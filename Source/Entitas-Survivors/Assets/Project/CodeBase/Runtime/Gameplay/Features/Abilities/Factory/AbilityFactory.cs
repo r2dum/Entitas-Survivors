@@ -78,10 +78,30 @@ namespace CodeBase.Runtime.Gameplay.Features.Abilities.Factory
         .PutOnCooldown();
     }
 
-    public GameEntity CreateGarlicAuraAbility() =>
-      CreateEntity.Empty()
+    public GameEntity CreateGarlicAuraAbility()
+    {
+      return CreateEntity.Empty()
         .AddId(_identifierService.Next())
         .AddAbilityId(AbilityId.GarlicAura)
         .With(x => x.isGarlicAuraAbility = true);
+    }
+
+    public GameEntity CreateHealAuraAbility(int producerId)
+    {
+      return CreateEntity.Empty()
+        .AddId(_identifierService.Next())
+        .AddAbilityId(AbilityId.HealAura)
+        .AddProducerId(producerId)
+        .With(x => x.isHealAuraAbility = true);
+    }
+
+    public GameEntity CreateSpeedUpAuraAbility(int producerId)
+    {
+      return CreateEntity.Empty()
+        .AddId(_identifierService.Next())
+        .AddAbilityId(AbilityId.SpeedUpAura)
+        .AddProducerId(producerId)
+        .With(x => x.isSpeedUpAuraAbility = true);
+    }
   }
 }

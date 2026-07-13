@@ -52,5 +52,4 @@ namespace CodeBase.Runtime.Gameplay.Features.Enchants.Systems
       return armament.StatusSetups;
     }
   }
-
 }

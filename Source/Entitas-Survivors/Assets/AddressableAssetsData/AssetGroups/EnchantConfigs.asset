@@ -21,6 +21,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - EnchantConfig
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b32ed7bbb67d14ac19f89082fa9f916a
+    m_Address: SheepHexEnchantConfig
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - EnchantConfig
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e472a23e835d44dd6a423d0cfd87cb88
     m_Address: PoisonEnchantConfig
     m_ReadOnly: 0

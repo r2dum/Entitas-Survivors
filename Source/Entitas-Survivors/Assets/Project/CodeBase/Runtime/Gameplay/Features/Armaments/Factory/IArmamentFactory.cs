@@ -11,7 +11,9 @@ namespace CodeBase.Runtime.Gameplay.Features.Armaments.Factory
     GameEntity CreateBouncingRuneStone(int level, Vector3 at);
     GameEntity CreateScatteringFireBall(int level, Vector3 at);
     GameEntity CreateScatteringFireBallShard(int level, Vector3 at);
-    GameEntity CreateEffectAura(AbilityId parentAbilityId, int producerId, int level);
+    GameEntity CreateGarlicAura(AbilityId parentAbilityId, int producerId, int level);
+    GameEntity CreateHealAura(AbilityId parentAbilityId, int producerId, int level);
+    GameEntity CreateSpeedUpAura(AbilityId parentAbilityId, int producerId, int level);
     GameEntity CreateExplosion(int producerId, Vector3 at);
   }
 }

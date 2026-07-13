@@ -26,8 +26,8 @@ namespace CodeBase.Runtime.Gameplay.Features.Hero.Systems
     public void Initialize()
     {
       GameEntity hero = _heroFactory.CreateHero(_levelDataProvider.StartPoint);
-      //_abilityFactory.CreateVegetableBoltAbility(level: 1);
-      _abilityFactory.CreateBouncingRuneStoneAbility(level: 1);
+      _abilityFactory.CreateVegetableBoltAbility(level: 1);
+      //_abilityFactory.CreateBouncingRuneStoneAbility(level: 1);
       _abilityFactory.CreateScatteringFireBallAbility(level: 1);
       _abilityFactory.CreateGarlicAuraAbility();
       //_abilityFactory.CreateEnergyOrb(level: 1);
@@ -38,9 +38,15 @@ namespace CodeBase.Runtime.Gameplay.Features.Hero.Systems
         Duration = 10
       }, hero.Id, hero.Id);*/
 
-      _statusApplier.ApplyStatus(new StatusSetup
+      /*_statusApplier.ApplyStatus(new StatusSetup
       {
         StatusTypeId = StatusTypeId.ExplosiveEnchant,
+        Duration = 50
+      }, hero.Id, hero.Id);*/
+
+      _statusApplier.ApplyStatus(new StatusSetup
+      {
+        StatusTypeId = StatusTypeId.SheepHexEnchant,
         Duration = 50
       }, hero.Id, hero.Id);
     }

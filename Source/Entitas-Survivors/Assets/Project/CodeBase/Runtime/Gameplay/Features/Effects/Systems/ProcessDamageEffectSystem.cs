@@ -33,5 +33,4 @@ namespace CodeBase.Runtime.Gameplay.Features.Effects.Systems
       }
     }
   }
-
 }

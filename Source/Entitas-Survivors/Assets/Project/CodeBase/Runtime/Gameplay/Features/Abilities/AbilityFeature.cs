@@ -17,6 +17,8 @@ namespace CodeBase.Runtime.Gameplay.Features.Abilities
       Add(systemFactory.Create<ScatteringFireBallAbilitySystem>());
 
       Add(systemFactory.Create<GarlicAuraAbilitySystem>());
+      Add(systemFactory.Create<HealAuraAbilitySystem>());
+      Add(systemFactory.Create<SpeedUpAuraAbilitySystem>());
     }
   }
 }

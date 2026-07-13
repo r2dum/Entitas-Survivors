@@ -7,11 +7,13 @@ namespace CodeBase.Runtime.Gameplay.Features.Statuses.Systems
   {
     public StatusVisualsFeature(ISystemFactory systemFactory)
     {
-      Add(systemFactory.Create<ApplyPoisonVisualsSystem>());
-      Add(systemFactory.Create<ApplyFreezeVisualsSystem>());
+      Add(systemFactory.Create<ApplyPoisonStatusVisualsSystem>());
+      Add(systemFactory.Create<ApplyFreezeStatusVisualsSystem>());
+      Add(systemFactory.Create<ApplyAppearanceSkinSystem>());
 
-      Add(systemFactory.Create<UnapplyPoisonVisualsSystem>());
-      Add(systemFactory.Create<UnapplyFreezeVisualsSystem>());
+      Add(systemFactory.Create<UnapplyPoisonStatusVisualsSystem>());
+      Add(systemFactory.Create<UnapplyFreezeStatusVisualsSystem>());
+      Add(systemFactory.Create<UnapplyAppearanceSkinSystem>());
     }
   }
 }

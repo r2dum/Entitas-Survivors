@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using CodeBase.Runtime.Gameplay.Core;
 using CodeBase.Runtime.Gameplay.Core.Physics;
 using Entitas;
 
@@ -38,7 +39,7 @@ namespace CodeBase.Runtime.Gameplay.Features.TargetCollection.Systems
         {
           int targetId = _targetCastBuffer[i].Id;
 
-          if (AlreadyProcessed(entity, targetId) == false)
+          if (entity.IsNotProducer(targetId) && AlreadyProcessed(entity, targetId) == false)
           {
             entity.TargetBuffer.Add(targetId);
             entity.ProcessedTargets.Add(targetId);

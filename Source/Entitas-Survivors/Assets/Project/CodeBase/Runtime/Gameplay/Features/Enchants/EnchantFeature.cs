@@ -9,6 +9,7 @@ namespace CodeBase.Runtime.Gameplay.Features.Enchants
     {
       Add(systemFactory.Create<PoisonEnchantSystem>());
       Add(systemFactory.Create<ExplosiveEnchantSystem>());
+      Add(systemFactory.Create<SheepHexEnchantSystem>());
 
       Add(systemFactory.Create<ApplyPoisonEnchantVisualsSystem>());
     }

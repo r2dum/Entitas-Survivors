@@ -4,6 +4,7 @@ namespace CodeBase.Runtime.Gameplay.Features.Enchants
   {
     Unknown = 0,
     PoisonArmaments = 1,
-    ExplosiveArmaments = 2
+    ExplosiveArmaments = 2,
+    SheepHexArmaments = 3
   }
 }

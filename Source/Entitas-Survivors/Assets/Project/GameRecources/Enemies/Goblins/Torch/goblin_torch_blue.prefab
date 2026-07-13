@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Torch_Blue
       objectReference: {fileID: 0}
+    - target: {fileID: -2253911629886400664, guid: a24b7ff8ec2e6aa4eb9c74ac14285813, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1160356261127867848, guid: a24b7ff8ec2e6aa4eb9c74ac14285813, type: 3}
       propertyPath: m_Controller
       value: 
@@ -81,6 +85,9 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: a24b7ff8ec2e6aa4eb9c74ac14285813, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 6453452025105579674}
+    - targetCorrespondingSourceObject: {fileID: -2253911629886400664, guid: a24b7ff8ec2e6aa4eb9c74ac14285813, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8843127439571917769}
   m_SourcePrefab: {fileID: -8435245712485981826, guid: a24b7ff8ec2e6aa4eb9c74ac14285813, type: 3}
@@ -104,6 +111,21 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: -2253911629886400664, guid: a24b7ff8ec2e6aa4eb9c74ac14285813, type: 3}
   m_PrefabInstance: {fileID: 2203792905671454983}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6453452025105579674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9091939340877915759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b06b08dabf1b45e991ea9c9eecefd395, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CodeBase.Runtime.Gameplay.Core.Visuals.Appearance.AppearanceSkin
+  _renderer: {fileID: 3224600182354190819}
+  _animator: {fileID: 1049083796407712975}
+  _statusVisuals: {fileID: 8843127439571917769}
 --- !u!114 &8843127439571917769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,7 +159,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1439855031686531578, guid: 87dfb064bc6d941469d685bf5de17e77, type: 3}
       propertyPath: m_Name
-      value: goblin_torch_blue
+      value: Goblin_Torch_Blue
       objectReference: {fileID: 0}
     - target: {fileID: 1643205620832147655, guid: 87dfb064bc6d941469d685bf5de17e77, type: 3}
       propertyPath: SpriteRenderer
@@ -215,6 +237,10 @@ PrefabInstance:
       propertyPath: _spriteRenderer
       value: 
       objectReference: {fileID: 3224600182354190819}
+    - target: {fileID: 3082643152100645119, guid: 87dfb064bc6d941469d685bf5de17e77, type: 3}
+      propertyPath: _appearanceVisuals
+      value: 
+      objectReference: {fileID: 5087417033541896144}
     - target: {fileID: 3626643382493988023, guid: 87dfb064bc6d941469d685bf5de17e77, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -245,6 +271,7 @@ PrefabInstance:
     - {fileID: 5720320290798490825, guid: 87dfb064bc6d941469d685bf5de17e77, type: 3}
     - {fileID: 4405621529687110489, guid: 87dfb064bc6d941469d685bf5de17e77, type: 3}
     - {fileID: 440852131687362776, guid: 87dfb064bc6d941469d685bf5de17e77, type: 3}
+    - {fileID: 3626643382493988023, guid: 87dfb064bc6d941469d685bf5de17e77, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 37033163526465442, guid: 87dfb064bc6d941469d685bf5de17e77, type: 3}
@@ -253,7 +280,13 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1439855031686531578, guid: 87dfb064bc6d941469d685bf5de17e77, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7930745167737417597}
+      addedObject: {fileID: 5916195874193161195}
+    - targetCorrespondingSourceObject: {fileID: 1439855031686531578, guid: 87dfb064bc6d941469d685bf5de17e77, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -3142677621817831266}
+    - targetCorrespondingSourceObject: {fileID: 8372560596226481995, guid: 87dfb064bc6d941469d685bf5de17e77, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5087417033541896144}
   m_SourcePrefab: {fileID: 100100000, guid: 87dfb064bc6d941469d685bf5de17e77, type: 3}
 --- !u!114 &2735919485273366653 stripped
 MonoBehaviour:
@@ -276,7 +309,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1439855031686531578, guid: 87dfb064bc6d941469d685bf5de17e77, type: 3}
   m_PrefabInstance: {fileID: 3328712635861724350}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7930745167737417597
+--- !u!114 &5916195874193161195
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -287,6 +320,39 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b4c6ef53f49845e6b657671fc9551c7b, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Assembly-CSharp::CodeBase.Runtime.Gameplay.Core.Visuals.Status.StatusVisualsRegistrar
   _entityView: {fileID: 2735919485273366653}
   _statusVisuals: {fileID: 8843127439571917769}
+--- !u!114 &-3142677621817831266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4452531728566216004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a26dd7c04e5843ec867965ef5379eeeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CodeBase.Runtime.Gameplay.Core.Visuals.Appearance.AppearanceVisualsRegistrar
+  _entityView: {fileID: 2735919485273366653}
+  _appearanceVisuals: {fileID: 5087417033541896144}
+--- !u!1 &6485386878121374709 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8372560596226481995, guid: 87dfb064bc6d941469d685bf5de17e77, type: 3}
+  m_PrefabInstance: {fileID: 3328712635861724350}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5087417033541896144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6485386878121374709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf893cb08903483fa02865fcfd748beb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CodeBase.Runtime.Gameplay.Core.Visuals.Appearance.AppearanceVisuals
+  _defaultSkin: {fileID: 6453452025105579674}
+  _container: {fileID: 3364866181197663004}

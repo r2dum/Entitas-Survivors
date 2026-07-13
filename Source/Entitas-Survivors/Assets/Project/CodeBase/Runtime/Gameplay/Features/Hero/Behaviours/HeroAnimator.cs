@@ -19,6 +19,7 @@ namespace CodeBase.Runtime.Gameplay.Features.Hero.Behaviours
 
     public void PlayMove() =>
       _animator.SetBool(_isMovingHash, true);
+
     public void PlayIdle() =>
       _animator.SetBool(_isMovingHash, false);
 

@@ -9,5 +9,7 @@
     RadialEnergyOrb = 4,
     BouncingRuneStone = 5,
     ScatteringFireBall = 6,
+    HealAura = 7,
+    SpeedUpAura = 8,
   }
 }

@@ -8,4 +8,5 @@ namespace CodeBase.Runtime.Gameplay.Features.Enchants
   
   [Game] public class PoisonEnchant : IComponent { }
   [Game] public class ExplosiveEnchant : IComponent { }
+  [Game] public class SheepHexEnchant : IComponent { }
 }
