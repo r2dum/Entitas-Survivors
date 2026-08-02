@@ -15,13 +15,13 @@ MonoBehaviour:
   m_GroupName: Common
   m_GUID: e98ebbfd1af2e4063af86279911ada32
   m_SerializeEntries:
-  - m_GUID: 0d4b7dd49969b49c7aafa823534c95f4
-    m_Address: Meadow
+  - m_GUID: 0c4278af8a7a84a35bc33d2f9d3ed67c
+    m_Address: AfkGainConfig
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 5472f3b39cc2a4d4d8784a87fe4d3cd3
-    m_Address: Lobby
+  - m_GUID: 3db91bbcbde80458c9e1e5ed375faa7c
+    m_Address: WindowsConfig
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

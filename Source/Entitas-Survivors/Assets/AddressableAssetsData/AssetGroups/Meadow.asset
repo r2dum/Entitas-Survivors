@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Meadow
+  m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
+  m_GroupName: Meadow
+  m_GUID: a8c2288c0fe694daabb732d68b084f26
+  m_SerializeEntries:
+  - m_GUID: 0d4b7dd49969b49c7aafa823534c95f4
+    m_Address: Meadow
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Meadow
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0e8b9cbbfc3684ae2a83962f95a35249
+    m_Address: WavesConfig
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Meadow
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3751f3c144d230044a60fef66f97ed49
+    m_Address: LevelUpWindow
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Meadow
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7638764279a5d904fbc0b1fd12487345
+    m_Address: AbilityCardUI
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Meadow
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a1f3786a1aa571b4b9c6d823652eef83
+    m_Address: EnchantUI
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Meadow
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bfd6610e28f5d49d4afd2b7f2e5240ad
+    m_Address: LevelUpConfig
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Meadow
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 9510292c3e59a4eb2b568341a0302e80, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: de2cdb030bb194d928b16aea900bb6c7, type: 2}
+    - {fileID: 11400000, guid: 1808bb2a68e6e40d88ec7e2a1b6f8a4e, type: 2}

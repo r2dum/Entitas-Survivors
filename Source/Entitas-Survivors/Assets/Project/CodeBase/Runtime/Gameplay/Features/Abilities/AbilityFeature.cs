@@ -9,11 +9,13 @@ namespace CodeBase.Runtime.Gameplay.Features.Abilities
     public AbilityFeature(ISystemFactory systemFactory)
     {
       Add(systemFactory.Create<CooldownSystem>());
+      Add(systemFactory.Create<DestroyAbilityEntitiesOnUpgradeSystem>());
 
       Add(systemFactory.Create<VegetableBoltAbilitySystem>());
       Add(systemFactory.Create<OrbitingMushroomAbilitySystem>());
       Add(systemFactory.Create<RadialEnergyOrbAbilitySystem>());
       Add(systemFactory.Create<BouncingRuneStoneAbilitySystem>());
+      Add(systemFactory.Create<DragonFruitAbilitySystem>());
       Add(systemFactory.Create<ScatteringFireBallAbilitySystem>());
 
       Add(systemFactory.Create<GarlicAuraAbilitySystem>());

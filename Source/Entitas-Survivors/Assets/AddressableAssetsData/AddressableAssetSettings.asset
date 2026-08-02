@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: e98ebbfd1af2e4063af86279911ada32
   m_currentHash:
     serializedVersion: 2
-    Hash: 1dcf375f8e45d28f333f32f95a817d96
+    Hash: 00000000000000000000000000000000
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_CatalogRequestsTimeout: 0
@@ -63,6 +63,9 @@ MonoBehaviour:
   m_GroupAssets:
   - {fileID: 11400000, guid: 17386bf8ad5a448b79f6a720d1d78fa4, type: 2}
   - {fileID: 11400000, guid: 00492ca6b6614465287e1a6d123069fd, type: 2}
+  - {fileID: 11400000, guid: 4201925e9e46e4e65a9294cd47542c6a, type: 2}
+  - {fileID: 11400000, guid: ccd53c07e4ee944878fd7761e0de0534, type: 2}
+  - {fileID: 11400000, guid: 9c03e22880e89489a8ac01dc36c4c563, type: 2}
   - {fileID: 11400000, guid: 85c16016780f84a5d87ef3bc1629e585, type: 2}
   - {fileID: 11400000, guid: 86d57b68ab63e44149ff1abc8a2b1c58, type: 2}
   - {fileID: 11400000, guid: a165269d4c7b244298308c092bb2b109, type: 2}
@@ -109,6 +112,8 @@ MonoBehaviour:
     - AbilityConfig
     - EnchantConfig
     - EnemyConfig
+    - LootConfig
+    - Meadow
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: c88d7ef1fe599455ea8cfa69305f8182, type: 2}

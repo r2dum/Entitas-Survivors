@@ -22,6 +22,7 @@ namespace CodeBase.Runtime.Infrastructure.EntityView.Systems
           GameMatcher.ViewPrefab,
           GameMatcher.ViewAddressLoading));
     }
+
     public void Execute()
     {
       foreach (GameEntity entity in _entities.GetEntities(_buffer))

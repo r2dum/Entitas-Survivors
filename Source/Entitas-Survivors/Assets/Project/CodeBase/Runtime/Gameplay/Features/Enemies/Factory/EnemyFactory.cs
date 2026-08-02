@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using CodeBase.Runtime.Common;
 using CodeBase.Runtime.Common.Entity;
 using CodeBase.Runtime.Common.Extensions;
+using CodeBase.Runtime.Gameplay.Features.Abilities;
 using CodeBase.Runtime.Gameplay.Features.Abilities.Factory;
 using CodeBase.Runtime.Gameplay.Features.CharacterStats;
 using CodeBase.Runtime.Gameplay.Features.Effects;
@@ -27,44 +28,19 @@ namespace CodeBase.Runtime.Gameplay.Features.Enemies.Factory
       _abilityFactory = abilityFactory;
     }
 
-    public GameEntity CreateEnemy(EnemyTypeId typeId, Vector3 at)
+    public GameEntity CreateEnemy(EnemyTypeId typeId, Vector2 at)
     {
-      switch (typeId)
-      {
-        case EnemyTypeId.GoblinWarrior:
-          return CreateGoblinWarrior(at);
-        case EnemyTypeId.GoblinHealer:
-          return CreateGoblinHealer(at);
-        case EnemyTypeId.GoblinSpeeder:
-          return CreateGoblinSpeeder(at);
-      }
+      EnemyConfig enemyConfig = _gameplayStaticDataService.GetEnemyConfig(typeId);
+      Dictionary<Stats, float> baseStats = CreateBaseStats(enemyConfig);
+      GameEntity entity = CreateEnemyEntity(typeId, baseStats, enemyConfig.ViewAddress.AssetGUID, at);
 
-      throw new Exception($"Enemy with type id {typeId} does not exist");
+      foreach (EnemyAbilitySetup abilitySetup in enemyConfig.AbilitySetups)
+        CreateAbility(abilitySetup.AbilityId, entity.Id);
+
+      return entity;
     }
 
-    private GameEntity CreateGoblinWarrior(Vector2 at)
-    {
-      Dictionary<Stats, float> warriorStats = CreateBaseStats(EnemyTypeId.GoblinWarrior);
-      return CreateEnemy(EnemyTypeId.GoblinWarrior, warriorStats, AssetAddress.GoblinTorchBlue, at);
-    }
-
-    private GameEntity CreateGoblinHealer(Vector2 at)
-    {
-      Dictionary<Stats, float> warriorStats = CreateBaseStats(EnemyTypeId.GoblinHealer);
-      GameEntity enemy = CreateEnemy(EnemyTypeId.GoblinHealer, warriorStats, AssetAddress.GoblinTorchYellow, at);
-      _abilityFactory.CreateHealAuraAbility(enemy.Id);
-      return enemy;
-    }
-
-    private GameEntity CreateGoblinSpeeder(Vector2 at)
-    {
-      Dictionary<Stats, float> warriorStats = CreateBaseStats(EnemyTypeId.GoblinSpeeder);
-      GameEntity enemy = CreateEnemy(EnemyTypeId.GoblinSpeeder, warriorStats, AssetAddress.GoblinTorchPurple, at);
-      _abilityFactory.CreateSpeedUpAuraAbility(enemy.Id);
-      return enemy;
-    }
-
-    private GameEntity CreateEnemy(EnemyTypeId typeId, Dictionary<Stats, float> baseStats, string viewAddress, Vector2 at)
+    private GameEntity CreateEnemyEntity(EnemyTypeId typeId, Dictionary<Stats, float> baseStats, string viewAddress, Vector2 at)
     {
       return CreateEntity.Empty()
         .AddId(_identifierService.Next())
@@ -95,13 +71,25 @@ namespace CodeBase.Runtime.Gameplay.Features.Enemies.Factory
         .With(x => x.isMovementAvailable = true);
     }
 
-    private Dictionary<Stats, float> CreateBaseStats(EnemyTypeId typeId)
+    private void CreateAbility(AbilityId abilityId, int producerId)
     {
-      EnemyConfig enemyConfig = _gameplayStaticDataService.GetEnemyConfig(typeId);
-      return InitStats.EmptyStatDictionary()
+      switch (abilityId)
+      {
+        case AbilityId.HealAura:
+          _abilityFactory.CreateHealAuraAbility(producerId);
+          break;
+        case AbilityId.SpeedUpAura:
+          _abilityFactory.CreateSpeedUpAuraAbility(producerId);
+          break;
+        default:
+          throw new Exception($"Ability {abilityId} is not supported for enemies");
+      }
+    }
+
+    private Dictionary<Stats, float> CreateBaseStats(EnemyConfig enemyConfig) =>
+      InitStats.EmptyStatDictionary()
         .With(x => x[Stats.Speed] = enemyConfig.Speed)
         .With(x => x[Stats.MaxHp] = enemyConfig.MaxHp)
         .With(x => x[Stats.Damage] = enemyConfig.Damage);
-    }
   }
 }

@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49f52ca7d93e4475b49d3ee6a647d3c4, type: 3}
+  m_Name: ExperienceGemLootConfig
+  m_EditorClassIdentifier: Assembly-CSharp::CodeBase.Runtime.Gameplay.Features.Loot.Configs.LootConfig
+  TypeId: 1
+  ViewPrefab: {fileID: 416741998203005955, guid: ed05576a6ea2aad4893feb6303a2f872, type: 3}
+  Experience: 1
+  EffectSetups: []
+  StatusSetups: []

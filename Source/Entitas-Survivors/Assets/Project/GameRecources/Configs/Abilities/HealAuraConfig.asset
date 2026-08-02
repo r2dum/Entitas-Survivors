@@ -13,12 +13,16 @@ MonoBehaviour:
   m_Name: HealAuraConfig
   m_EditorClassIdentifier: 
   AbilityId: 7
+  OwnerTypeId: 1
   Levels:
-  - Cooldown: 0
+  - Icon: {fileID: 0}
+    Description: 
     ViewPrefab: {fileID: 2893445765622195075, guid: b50a88e5329f34a1786a43f38fef55fb, type: 3}
+    Cooldown: 0
     EffectSetups: []
     StatusSetups:
-    - StatusTypeId: 3
+    - AppearanceSkin: {fileID: 0}
+      StatusTypeId: 3
       Value: 0.25
       Duration: 0
       Period: 0

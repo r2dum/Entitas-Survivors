@@ -1,3 +1,4 @@
+using CodeBase.Runtime.Gameplay.Levels.Providers;
 using Zenject;
 
 namespace CodeBase.Runtime.Gameplay.Levels

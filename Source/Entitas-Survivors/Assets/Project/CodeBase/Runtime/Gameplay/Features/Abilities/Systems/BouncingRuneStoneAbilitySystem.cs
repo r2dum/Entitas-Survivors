@@ -1,11 +1,12 @@
 using System.Collections.Generic;
 using CodeBase.Runtime.Common.Extensions;
+using CodeBase.Runtime.Gameplay.Core;
 using CodeBase.Runtime.Gameplay.Features.Abilities.Configs;
+using CodeBase.Runtime.Gameplay.Features.Abilities.Upgrade;
 using CodeBase.Runtime.Gameplay.Features.Armaments.Factory;
 using CodeBase.Runtime.Gameplay.Features.Cooldowns;
 using CodeBase.Runtime.Gameplay.GameplayStaticData;
 using Entitas;
-using UnityEngine;
 
 namespace CodeBase.Runtime.Gameplay.Features.Abilities.Systems
 {
@@ -13,6 +14,7 @@ namespace CodeBase.Runtime.Gameplay.Features.Abilities.Systems
   {
     private readonly IGameplayStaticDataService _staticDataService;
     private readonly IArmamentFactory _armamentFactory;
+    private readonly IAbilityUpgradeService _abilityUpgradeService;
 
     private readonly IGroup<GameEntity> _abilities;
     private readonly IGroup<GameEntity> _heroes;
@@ -20,10 +22,12 @@ namespace CodeBase.Runtime.Gameplay.Features.Abilities.Systems
 
     private readonly List<GameEntity> _buffer = new(1);
 
-    public BouncingRuneStoneAbilitySystem(GameContext gameContext, IGameplayStaticDataService staticDataService, IArmamentFactory armamentFactory)
+    public BouncingRuneStoneAbilitySystem(GameContext gameContext, IGameplayStaticDataService staticDataService,
+      IArmamentFactory armamentFactory, IAbilityUpgradeService abilityUpgradeService)
     {
       _staticDataService = staticDataService;
       _armamentFactory = armamentFactory;
+      _abilityUpgradeService = abilityUpgradeService;
 
       _abilities = gameContext.GetGroup(GameMatcher
         .AllOf(
@@ -49,40 +53,23 @@ namespace CodeBase.Runtime.Gameplay.Features.Abilities.Systems
         if (_enemies.count <= 0)
           continue;
 
-        GameEntity nearestEnemy = GetNearestEnemy(hero.WorldPosition);
+        GameEntity nearestEnemy = _enemies.GetNearest(hero.WorldPosition);
 
         if (nearestEnemy == null)
           continue;
 
-        AbilityLevel abilityLevel = _staticDataService.GetAbilityLevel(AbilityId.BouncingRuneStone, 1);
+        int level = _abilityUpgradeService.GetAbilityLevel(AbilityId.BouncingRuneStone);
+
+        AbilityLevel abilityLevel = _staticDataService.GetAbilityLevel(AbilityId.BouncingRuneStone, level);
 
         _armamentFactory
-          .CreateBouncingRuneStone(1, hero.WorldPosition)
+          .CreateBouncingRuneStone(level, hero.WorldPosition)
           .AddProducerId(hero.Id)
           .ReplaceDirection((nearestEnemy.WorldPosition - hero.WorldPosition).normalized)
           .With(x => x.isMoving = true);
 
-        ability
-          .PutOnCooldown(abilityLevel.Cooldown);
+        ability.PutOnCooldown(abilityLevel.Cooldown);
       }
-    }
-
-    private GameEntity GetNearestEnemy(Vector3 heroPosition)
-    {
-      GameEntity nearestEnemy = null;
-      float minDistanceSqr = float.MaxValue;
-
-      foreach (GameEntity enemy in _enemies)
-      {
-        float distanceSqr = (enemy.WorldPosition - heroPosition).sqrMagnitude;
-        if (distanceSqr < minDistanceSqr)
-        {
-          minDistanceSqr = distanceSqr;
-          nearestEnemy = enemy;
-        }
-      }
-
-      return nearestEnemy;
     }
   }
 }

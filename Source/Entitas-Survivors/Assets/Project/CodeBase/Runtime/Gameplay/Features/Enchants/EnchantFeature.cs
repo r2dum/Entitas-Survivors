@@ -12,6 +12,8 @@ namespace CodeBase.Runtime.Gameplay.Features.Enchants
       Add(systemFactory.Create<SheepHexEnchantSystem>());
 
       Add(systemFactory.Create<ApplyPoisonEnchantVisualsSystem>());
+
+      Add(systemFactory.Create<AddEnchantsToHolderSystem>());
     }
   }
 }

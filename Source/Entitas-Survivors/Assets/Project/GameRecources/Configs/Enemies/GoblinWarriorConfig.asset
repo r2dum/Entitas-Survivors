@@ -13,6 +13,12 @@ MonoBehaviour:
   m_Name: GoblinWarriorConfig
   m_EditorClassIdentifier: Assembly-CSharp::CodeBase.Runtime.Gameplay.Features.Enemies.Configs.EnemyConfig
   TypeId: 1
+  ViewAddress:
+    m_AssetGUID: 5aa0f6aecef0da643b3ff98e1dc91c2e
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
   SpawnWeight: 70
   MaxHp: 3
   Speed: 1.5

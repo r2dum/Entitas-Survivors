@@ -9,6 +9,8 @@ namespace CodeBase.Runtime.Common.Destruct
     {
       Add(systemFactory.Create<SelfDestructTimerSystem>());
 
+      Add(systemFactory.Create<CleanupMetaDestructedSystem>());
+
       Add(systemFactory.Create<CleanupGameDestructedViewSystem>());
       Add(systemFactory.Create<CleanupGameDestructedSystem>());
     }

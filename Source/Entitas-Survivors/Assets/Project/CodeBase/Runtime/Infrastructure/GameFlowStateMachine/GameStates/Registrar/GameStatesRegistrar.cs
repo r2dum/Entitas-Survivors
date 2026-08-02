@@ -10,6 +10,8 @@ namespace CodeBase.Runtime.Infrastructure.GameFlowStateMachine.GameStates.Regist
     public override void RegisterStates()
     {
       Register<GameBootstrapState>();
+      Register<LoadProgressState>();
+      Register<ActualizeProgressState>();
       Register<LobbyFlowState>();
       Register<MeadowFlowState>();
     }

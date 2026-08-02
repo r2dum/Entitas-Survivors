@@ -9,6 +9,8 @@ namespace CodeBase.Runtime.Gameplay.Features.Armaments.Factory
     GameEntity CreateRadialEnergyOrb(int level, Vector3 at);
     GameEntity CreateOrbitingMushroom(int level, Vector3 at, float phase);
     GameEntity CreateBouncingRuneStone(int level, Vector3 at);
+    GameEntity CreateDragonFruit(int level, Vector3 at);
+    GameEntity CreateDragonFruitFirePuddle(int level, Vector3 at);
     GameEntity CreateScatteringFireBall(int level, Vector3 at);
     GameEntity CreateScatteringFireBallShard(int level, Vector3 at);
     GameEntity CreateGarlicAura(AbilityId parentAbilityId, int producerId, int level);

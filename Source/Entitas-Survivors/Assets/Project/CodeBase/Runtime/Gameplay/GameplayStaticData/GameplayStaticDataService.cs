@@ -7,6 +7,9 @@ using CodeBase.Runtime.Gameplay.Features.Abilities.Configs;
 using CodeBase.Runtime.Gameplay.Features.Enchants;
 using CodeBase.Runtime.Gameplay.Features.Enemies;
 using CodeBase.Runtime.Gameplay.Features.Enemies.Configs;
+using CodeBase.Runtime.Gameplay.Features.LevelUp.Configs;
+using CodeBase.Runtime.Gameplay.Features.Loot;
+using CodeBase.Runtime.Gameplay.Features.Loot.Configs;
 using CodeBase.Runtime.Infrastructure.AssetManagement;
 using Cysharp.Threading.Tasks;
 
@@ -16,9 +19,13 @@ namespace CodeBase.Runtime.Gameplay.GameplayStaticData
   {
     private readonly IAssetProvider _assetProvider;
 
+    private Dictionary<LootTypeId, LootConfig> _lootById;
     private Dictionary<EnemyTypeId, EnemyConfig> _enemyById;
     private Dictionary<AbilityId, AbilityConfig> _abilityById;
     private Dictionary<EnchantTypeId, EnchantConfig> _enchantById;
+
+    private LevelUpConfig _levelUpConfig;
+    private WavesConfig _wavesConfig;
 
     public GameplayStaticDataService(IAssetProvider assetProvider) =>
       _assetProvider = assetProvider;
@@ -28,6 +35,9 @@ namespace CodeBase.Runtime.Gameplay.GameplayStaticData
       await LoadAbilities();
       await LoadEnchants();
       await LoadEnemies();
+      await LoadLoot();
+      await LoadLevelUpConfig();
+      await LoadWavesConfig();
     }
 
     public AbilityConfig GetAbilityConfig(AbilityId abilityId)
@@ -72,6 +82,29 @@ namespace CodeBase.Runtime.Gameplay.GameplayStaticData
       throw new Exception("Enemy configs was not found");
     }
 
+    public LootConfig GetLootConfig(LootTypeId typeId)
+    {
+      if (_lootById.TryGetValue(typeId, out LootConfig config))
+        return config;
+
+      throw new Exception($"Loot config for {typeId} was not found");
+    }
+
+    public List<AbilityId> GetHeroUpgradableAbilityIds() =>
+      _abilityById.Values
+        .Where(config => config.OwnerTypeId is OwnerTypeId.Hero or OwnerTypeId.Shared)
+        .Select(config => config.AbilityId)
+        .ToList();
+
+    public WavesConfig GetWavesConfig() =>
+      _wavesConfig;
+
+    public int MaxLevel() =>
+      _levelUpConfig.MaxLevel;
+
+    public float ExperienceForLevel(int level) =>
+      _levelUpConfig.ExperienceForLevel[level];
+
     private async UniTask LoadEnemies()
     {
       EnemyConfig[] enemyConfigs = await GetConfigs<EnemyConfig>(AssetLabel.EnemyConfig);
@@ -89,6 +122,18 @@ namespace CodeBase.Runtime.Gameplay.GameplayStaticData
       EnchantConfig[] enchantConfigs = await GetConfigs<EnchantConfig>(AssetLabel.EnchantConfig);
       _enchantById = enchantConfigs.ToDictionary(c => c.TypeId, c => c);
     }
+
+    private async UniTask LoadLoot()
+    {
+      LootConfig[] lootConfigs = await GetConfigs<LootConfig>(AssetLabel.LootConfig);
+      _lootById = lootConfigs.ToDictionary(c => c.TypeId, c => c);
+    }
+
+    private async UniTask LoadLevelUpConfig() =>
+      _levelUpConfig = await _assetProvider.Load<LevelUpConfig>(AssetAddress.LevelUpConfig);
+
+    private async UniTask LoadWavesConfig() =>
+      _wavesConfig = await _assetProvider.Load<WavesConfig>(AssetAddress.WavesConfig);
 
     private async UniTask<TConfig[]> GetConfigs<TConfig>(string labelKey) where TConfig : class
     {

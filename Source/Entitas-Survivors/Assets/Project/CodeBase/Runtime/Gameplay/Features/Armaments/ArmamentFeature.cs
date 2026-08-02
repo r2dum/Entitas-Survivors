@@ -8,10 +8,12 @@ namespace CodeBase.Runtime.Gameplay.Features.Armaments
     public ArmamentFeature(ISystemFactory systemFactory)
     {
       Add(systemFactory.Create<MarkProcessedOnTargetPierceLimitExceededSystem>());
+      Add(systemFactory.Create<MarkProcessedOnTargetBounceLimitExceededSystem>());
+      Add(systemFactory.Create<MarkProcessedOnDestinationReachedSystem>());
 
       Add(systemFactory.Create<RedirectBouncingArmamentToNextTargetSystem>());
-      Add(systemFactory.Create<MarkProcessedOnTargetBounceLimitExceededSystem>());
-      Add(systemFactory.Create<SpawnShardsOnScatteringArmamentReachedSystem>());
+      Add(systemFactory.Create<SpawnShardsOnScatteringFireBallReachedSystem>());
+      Add(systemFactory.Create<SpawnFireOnDragonFruitDestinationReachedSystem>());
 
       Add(systemFactory.Create<FollowProducerSystem>());
 

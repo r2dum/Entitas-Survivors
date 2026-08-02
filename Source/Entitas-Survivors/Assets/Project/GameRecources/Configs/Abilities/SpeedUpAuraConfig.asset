@@ -13,12 +13,16 @@ MonoBehaviour:
   m_Name: SpeedUpAuraConfig
   m_EditorClassIdentifier: 
   AbilityId: 8
+  OwnerTypeId: 1
   Levels:
-  - Cooldown: 0
+  - Icon: {fileID: 0}
+    Description: 
     ViewPrefab: {fileID: 2893445765622195075, guid: bdfa177c01a34482c88631eff4a779d7, type: 3}
+    Cooldown: 0
     EffectSetups: []
     StatusSetups:
-    - StatusTypeId: 4
+    - AppearanceSkin: {fileID: 0}
+      StatusTypeId: 4
       Value: 2.5
       Duration: 0.1
       Period: 0

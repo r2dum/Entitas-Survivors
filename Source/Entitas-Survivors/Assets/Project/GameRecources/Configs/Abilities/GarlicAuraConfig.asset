@@ -14,11 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AbilityId: 3
   Levels:
-  - Cooldown: 0
+  - Icon: {fileID: 21300000, guid: 74e3aa8890b1b2143a58e7e253016600, type: 3}
+    Description: Adds an odourous aura
     ViewPrefab: {fileID: 2893445765622195075, guid: c4c8cf39ebe3672468c50bd2fedcd936, type: 3}
+    Cooldown: 0
     EffectSetups: []
     StatusSetups:
-    - StatusTypeId: 2
+    - AppearanceSkin: {fileID: 0}
+      StatusTypeId: 2
       Value: -5
       Duration: 0.2
       Period: 0
@@ -33,3 +36,117 @@ MonoBehaviour:
     AuraSetup:
       Radius: 2
       Interval: 0.5
+    ScatteringSetup:
+      ViewPrefab: {fileID: 0}
+      ProjectileSetup:
+        Speed: 0
+        Pierce: 1
+        Bounce: 0
+        ProjectileCount: 1
+        ContactRadius: 0
+        OrbitRadius: 0
+        Lifetime: 0
+      EffectSetups: []
+      StatusSetups: []
+  - Icon: {fileID: 21300000, guid: 74e3aa8890b1b2143a58e7e253016600, type: 3}
+    Description: Increases odour strength
+    ViewPrefab: {fileID: 2893445765622195075, guid: c4c8cf39ebe3672468c50bd2fedcd936, type: 3}
+    Cooldown: 0
+    EffectSetups: []
+    StatusSetups:
+    - AppearanceSkin: {fileID: 0}
+      StatusTypeId: 2
+      Value: -5
+      Duration: 0.2
+      Period: 0
+    ProjectileSetup:
+      Speed: 0
+      Pierce: 0
+      Bounce: 0
+      ProjectileCount: 0
+      ContactRadius: 0
+      OrbitRadius: 0
+      Lifetime: 0
+    AuraSetup:
+      Radius: 5
+      Interval: 0.5
+    ScatteringSetup:
+      ViewPrefab: {fileID: 0}
+      ProjectileSetup:
+        Speed: 0
+        Pierce: 1
+        Bounce: 0
+        ProjectileCount: 1
+        ContactRadius: 0
+        OrbitRadius: 0
+        Lifetime: 0
+      EffectSetups: []
+      StatusSetups: []
+  - Icon: {fileID: 21300000, guid: 74e3aa8890b1b2143a58e7e253016600, type: 3}
+    Description: Increases odour strength even further
+    ViewPrefab: {fileID: 2893445765622195075, guid: c4c8cf39ebe3672468c50bd2fedcd936, type: 3}
+    Cooldown: 0
+    EffectSetups: []
+    StatusSetups:
+    - AppearanceSkin: {fileID: 0}
+      StatusTypeId: 2
+      Value: -5
+      Duration: 0.2
+      Period: 0
+    ProjectileSetup:
+      Speed: 0
+      Pierce: 0
+      Bounce: 0
+      ProjectileCount: 0
+      ContactRadius: 0
+      OrbitRadius: 0
+      Lifetime: 0
+    AuraSetup:
+      Radius: 8
+      Interval: 0.5
+    ScatteringSetup:
+      ViewPrefab: {fileID: 0}
+      ProjectileSetup:
+        Speed: 0
+        Pierce: 1
+        Bounce: 0
+        ProjectileCount: 1
+        ContactRadius: 0
+        OrbitRadius: 0
+        Lifetime: 0
+      EffectSetups: []
+      StatusSetups: []
+  - Icon: {fileID: 21300000, guid: 74e3aa8890b1b2143a58e7e253016600, type: 3}
+    Description: Increases odour stunrate
+    ViewPrefab: {fileID: 2893445765622195075, guid: c4c8cf39ebe3672468c50bd2fedcd936, type: 3}
+    Cooldown: 0
+    EffectSetups: []
+    StatusSetups:
+    - AppearanceSkin: {fileID: 0}
+      StatusTypeId: 2
+      Value: -5
+      Duration: 0.2
+      Period: 0
+    ProjectileSetup:
+      Speed: 0
+      Pierce: 0
+      Bounce: 0
+      ProjectileCount: 0
+      ContactRadius: 0
+      OrbitRadius: 0
+      Lifetime: 0
+    AuraSetup:
+      Radius: 8
+      Interval: 0.3
+    ScatteringSetup:
+      ViewPrefab: {fileID: 0}
+      ProjectileSetup:
+        Speed: 0
+        Pierce: 1
+        Bounce: 0
+        ProjectileCount: 1
+        ContactRadius: 0
+        OrbitRadius: 0
+        Lifetime: 0
+      EffectSetups: []
+      StatusSetups: []

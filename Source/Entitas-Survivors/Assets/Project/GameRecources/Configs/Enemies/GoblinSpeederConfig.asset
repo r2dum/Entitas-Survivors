@@ -13,7 +13,17 @@ MonoBehaviour:
   m_Name: GoblinSpeederConfig
   m_EditorClassIdentifier: Assembly-CSharp::CodeBase.Runtime.Gameplay.Features.Enemies.Configs.EnemyConfig
   TypeId: 3
+  ViewAddress:
+    m_AssetGUID: e5be98f95f46b4d2697c498ec16d03bb
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
   SpawnWeight: 15
+  UnlockTime: 30
   MaxHp: 2
   Speed: 1.5
   Damage: 0.5
+  AbilitySetups:
+  - AbilityId: 8
+    Level: 1

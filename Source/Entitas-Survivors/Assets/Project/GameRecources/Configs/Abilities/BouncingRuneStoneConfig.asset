@@ -14,14 +14,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AbilityId: 5
   Levels:
-  - Cooldown: 2.3
+  - Icon: {fileID: 21300000, guid: b9a847102a75c8c429a8f749008df6c2, type: 3}
+    Description: Adds a bouncing projectile
     ViewPrefab: {fileID: 2261363583038230886, guid: 5740f2e6cad7b458f84a96bac0b5b478, type: 3}
+    Cooldown: 2.3
     EffectSetups:
     - EffectTypeId: 1
       Value: 1
     StatusSetups: []
     ProjectileSetup:
-      Speed: 4
+      Speed: 3
+      Pierce: 0
+      Bounce: 2
+      ProjectileCount: 1
+      ContactRadius: 0.1
+      OrbitRadius: 0
+      Lifetime: 5
+    AuraSetup:
+      Radius: 0
+      Interval: 0
+    ScatteringSetup:
+      ViewPrefab: {fileID: 0}
+      ProjectileSetup:
+        Speed: 0
+        Pierce: 1
+        Bounce: 0
+        ProjectileCount: 1
+        ContactRadius: 0
+        OrbitRadius: 0
+        Lifetime: 0
+      EffectSetups: []
+      StatusSetups: []
+  - Icon: {fileID: 21300000, guid: b9a847102a75c8c429a8f749008df6c2, type: 3}
+    Description: Increased speed
+    ViewPrefab: {fileID: 2261363583038230886, guid: 5740f2e6cad7b458f84a96bac0b5b478, type: 3}
+    Cooldown: 2.3
+    EffectSetups:
+    - EffectTypeId: 1
+      Value: 1
+    StatusSetups: []
+    ProjectileSetup:
+      Speed: 5
       Pierce: 0
       Bounce: 2
       ProjectileCount: 1

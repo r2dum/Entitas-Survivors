@@ -8,9 +8,10 @@ namespace CodeBase.Runtime.Gameplay.Features.Movement
     public MovementFeature(ISystemFactory systemFactory)
     {
       Add(systemFactory.Create<DirectionalDeltaMoveSystem>());
-
       Add(systemFactory.Create<OrbitalDeltaMoveSystem>());
       Add(systemFactory.Create<OrbitCenterFollowSystem>());
+
+      Add(systemFactory.Create<MarkReachedDestinationSystem>());
 
       Add(systemFactory.Create<TurnAlongDirectionSystem>());
       Add(systemFactory.Create<UpdateTransformPositionSystem>());

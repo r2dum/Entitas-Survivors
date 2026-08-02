@@ -1,18 +1,22 @@
 using CodeBase.Runtime.Infrastructure.AssetManagement;
 using CodeBase.Runtime.Infrastructure.Debugs.Log;
 using CodeBase.Runtime.Infrastructure.StateMachine;
+using CodeBase.Runtime.Services.StaticData;
 
 namespace CodeBase.Runtime.Infrastructure.GameFlowStateMachine.GameStates
 {
   public class GameBootstrapState : IState
   {
     private readonly GameStateMachine _gameStateMachine;
+    private readonly IStaticDataService _staticDataService;
     private readonly IAssetProvider _assetProvider;
     private readonly ILogService _logService;
 
-    public GameBootstrapState(GameStateMachine gameStateMachine, IAssetProvider assetProvider, ILogService logService)
+    public GameBootstrapState(GameStateMachine gameStateMachine, IStaticDataService staticDataService,
+      IAssetProvider assetProvider, ILogService logService)
     {
       _gameStateMachine = gameStateMachine;
+      _staticDataService = staticDataService;
       _assetProvider = assetProvider;
       _logService = logService;
     }
@@ -21,7 +25,8 @@ namespace CodeBase.Runtime.Infrastructure.GameFlowStateMachine.GameStates
     {
       _logService.Write("Enter " + nameof(GameBootstrapState));
       await _assetProvider.InitializeAsync();
-      _gameStateMachine.Enter<MeadowFlowState>();
+      await _staticDataService.LoadAllAsync();
+      _gameStateMachine.Enter<LoadProgressState>();
     }
 
     public void Exit() =>

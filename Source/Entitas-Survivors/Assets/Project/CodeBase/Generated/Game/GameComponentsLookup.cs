@@ -26,88 +26,101 @@ public static class GameComponentsLookup {
     public const int WorldPosition = 15;
     public const int AbilityId = 16;
     public const int BouncingRuneStoneAbility = 17;
-    public const int GarlicAuraAbility = 18;
-    public const int HealAuraAbility = 19;
-    public const int OrbitingMushroomAbility = 20;
-    public const int ParentAbility = 21;
-    public const int RadialEnergyOrbAbility = 22;
-    public const int ScatteringFireBallAbility = 23;
-    public const int SpeedUpAuraAbility = 24;
-    public const int VegetableBoltAbility = 25;
-    public const int Armament = 26;
-    public const int EffectSetups = 27;
-    public const int FollowingProducer = 28;
-    public const int Processed = 29;
-    public const int Scattering = 30;
-    public const int StatusSetups = 31;
-    public const int TargetBounceLimit = 32;
-    public const int TargetPierceLimit = 33;
-    public const int BaseStats = 34;
-    public const int StatChange = 35;
-    public const int StatModifiers = 36;
-    public const int Cooldown = 37;
-    public const int CooldownLeft = 38;
-    public const int CooldownUp = 39;
-    public const int DamageEffect = 40;
-    public const int Effect = 41;
-    public const int EffectValue = 42;
-    public const int HealEffect = 43;
-    public const int TargetId = 44;
-    public const int EnchantTypeId = 45;
-    public const int EnchantVisuals = 46;
-    public const int ExplosiveEnchant = 47;
-    public const int PoisonEnchant = 48;
-    public const int SheepHexEnchant = 49;
-    public const int Enemy = 50;
-    public const int EnemyAnimator = 51;
-    public const int EnemyTypeId = 52;
-    public const int SpawnTimer = 53;
-    public const int Hero = 54;
-    public const int HeroAnimator = 55;
-    public const int CurrentHp = 56;
-    public const int Dead = 57;
-    public const int MaxHp = 58;
-    public const int ProcessingDeath = 59;
-    public const int Direction = 60;
-    public const int MovementAvailable = 61;
-    public const int Moving = 62;
-    public const int OrbitCenterFollowTarget = 63;
-    public const int OrbitCenterPosition = 64;
-    public const int OrbitPhase = 65;
-    public const int OrbitRadius = 66;
-    public const int RotationAlignedAlongDirection = 67;
-    public const int Speed = 68;
-    public const int TurnedAlongDirection = 69;
-    public const int Affected = 70;
-    public const int AppearanceSkin = 71;
-    public const int AppearanceVisuals = 72;
-    public const int Applied = 73;
-    public const int ApplierStatusLink = 74;
-    public const int Duration = 75;
-    public const int Freeze = 76;
-    public const int Heal = 77;
-    public const int Period = 78;
-    public const int Poison = 79;
-    public const int SheepHex = 80;
-    public const int SpeedModifier = 81;
-    public const int Status = 82;
-    public const int StatusTypeId = 83;
-    public const int StatusVisuals = 84;
-    public const int TimeLeft = 85;
-    public const int TimeSinceLastTick = 86;
-    public const int Unapplied = 87;
-    public const int CollectingTargetsContinuously = 88;
-    public const int CollectTargetsInterval = 89;
-    public const int CollectTargetsTimer = 90;
-    public const int LayerMask = 91;
-    public const int ProcessedTargets = 92;
-    public const int Reached = 93;
-    public const int ReadyToCollectTargets = 94;
-    public const int TargetBuffer = 95;
-    public const int AxisInput = 96;
-    public const int Input = 97;
+    public const int DragonFruitAbility = 18;
+    public const int GarlicAuraAbility = 19;
+    public const int HealAuraAbility = 20;
+    public const int OrbitingMushroomAbility = 21;
+    public const int ParentAbility = 22;
+    public const int RadialEnergyOrbAbility = 23;
+    public const int RecreatedOnUpgrade = 24;
+    public const int ScatteringFireBallAbility = 25;
+    public const int SpeedUpAuraAbility = 26;
+    public const int UpgradeRequest = 27;
+    public const int VegetableBoltAbility = 28;
+    public const int Armament = 29;
+    public const int DragonFruitArmament = 30;
+    public const int EffectSetups = 31;
+    public const int FollowingProducer = 32;
+    public const int Processed = 33;
+    public const int ScatteringFireBallArmament = 34;
+    public const int StatusSetups = 35;
+    public const int TargetBounceLimit = 36;
+    public const int TargetPierceLimit = 37;
+    public const int BaseStats = 38;
+    public const int StatChange = 39;
+    public const int StatModifiers = 40;
+    public const int Cooldown = 41;
+    public const int CooldownLeft = 42;
+    public const int CooldownUp = 43;
+    public const int DamageEffect = 44;
+    public const int Effect = 45;
+    public const int EffectValue = 46;
+    public const int HealEffect = 47;
+    public const int TargetId = 48;
+    public const int EnchantHolder = 49;
+    public const int EnchantTypeId = 50;
+    public const int EnchantVisuals = 51;
+    public const int ExplosiveEnchant = 52;
+    public const int PoisonEnchant = 53;
+    public const int SheepHexEnchant = 54;
+    public const int Enemy = 55;
+    public const int EnemyAnimator = 56;
+    public const int EnemyTypeId = 57;
+    public const int SpawnTimer = 58;
+    public const int Hero = 59;
+    public const int HeroAnimator = 60;
+    public const int ExperienceMeter = 61;
+    public const int LevelUp = 62;
+    public const int CurrentHp = 63;
+    public const int Dead = 64;
+    public const int MaxHp = 65;
+    public const int ProcessingDeath = 66;
+    public const int Collected = 67;
+    public const int Experience = 68;
+    public const int LootTypeId = 69;
+    public const int PickupRadius = 70;
+    public const int Pullable = 71;
+    public const int Pulling = 72;
+    public const int Destination = 73;
+    public const int Direction = 74;
+    public const int MovementAvailable = 75;
+    public const int Moving = 76;
+    public const int OrbitCenterFollowTarget = 77;
+    public const int OrbitCenterPosition = 78;
+    public const int OrbitPhase = 79;
+    public const int OrbitRadius = 80;
+    public const int RotationAlignedAlongDirection = 81;
+    public const int Speed = 82;
+    public const int TurnedAlongDirection = 83;
+    public const int Affected = 84;
+    public const int AppearanceSkin = 85;
+    public const int AppearanceVisuals = 86;
+    public const int Applied = 87;
+    public const int ApplierStatusLink = 88;
+    public const int Duration = 89;
+    public const int Freeze = 90;
+    public const int Heal = 91;
+    public const int Period = 92;
+    public const int Poison = 93;
+    public const int SheepHex = 94;
+    public const int SpeedModifier = 95;
+    public const int Status = 96;
+    public const int StatusTypeId = 97;
+    public const int StatusVisuals = 98;
+    public const int TimeLeft = 99;
+    public const int TimeSinceLastTick = 100;
+    public const int Unapplied = 101;
+    public const int CollectingTargetsContinuously = 102;
+    public const int CollectTargetsInterval = 103;
+    public const int CollectTargetsTimer = 104;
+    public const int LayerMask = 105;
+    public const int ProcessedTargets = 106;
+    public const int Reached = 107;
+    public const int ReadyToCollectTargets = 108;
+    public const int TargetBuffer = 109;
+    public const int LevelTime = 110;
 
-    public const int TotalComponents = 98;
+    public const int TotalComponents = 111;
 
     public static readonly string[] componentNames = {
         "Destructed",
@@ -128,19 +141,23 @@ public static class GameComponentsLookup {
         "WorldPosition",
         "AbilityId",
         "BouncingRuneStoneAbility",
+        "DragonFruitAbility",
         "GarlicAuraAbility",
         "HealAuraAbility",
         "OrbitingMushroomAbility",
         "ParentAbility",
         "RadialEnergyOrbAbility",
+        "RecreatedOnUpgrade",
         "ScatteringFireBallAbility",
         "SpeedUpAuraAbility",
+        "UpgradeRequest",
         "VegetableBoltAbility",
         "Armament",
+        "DragonFruitArmament",
         "EffectSetups",
         "FollowingProducer",
         "Processed",
-        "Scattering",
+        "ScatteringFireBallArmament",
         "StatusSetups",
         "TargetBounceLimit",
         "TargetPierceLimit",
@@ -155,6 +172,7 @@ public static class GameComponentsLookup {
         "EffectValue",
         "HealEffect",
         "TargetId",
+        "EnchantHolder",
         "EnchantTypeId",
         "EnchantVisuals",
         "ExplosiveEnchant",
@@ -166,10 +184,19 @@ public static class GameComponentsLookup {
         "SpawnTimer",
         "Hero",
         "HeroAnimator",
+        "ExperienceMeter",
+        "LevelUp",
         "CurrentHp",
         "Dead",
         "MaxHp",
         "ProcessingDeath",
+        "Collected",
+        "Experience",
+        "LootTypeId",
+        "PickupRadius",
+        "Pullable",
+        "Pulling",
+        "Destination",
         "Direction",
         "MovementAvailable",
         "Moving",
@@ -206,8 +233,7 @@ public static class GameComponentsLookup {
         "Reached",
         "ReadyToCollectTargets",
         "TargetBuffer",
-        "AxisInput",
-        "Input"
+        "LevelTime"
     };
 
     public static readonly System.Type[] componentTypes = {
@@ -229,19 +255,23 @@ public static class GameComponentsLookup {
         typeof(CodeBase.Runtime.Gameplay.Core.WorldPosition),
         typeof(CodeBase.Runtime.Gameplay.Features.Abilities.AbilityIdComponent),
         typeof(CodeBase.Runtime.Gameplay.Features.Abilities.BouncingRuneStoneAbility),
+        typeof(CodeBase.Runtime.Gameplay.Features.Abilities.DragonFruitAbility),
         typeof(CodeBase.Runtime.Gameplay.Features.Abilities.GarlicAuraAbility),
         typeof(CodeBase.Runtime.Gameplay.Features.Abilities.HealAuraAbility),
         typeof(CodeBase.Runtime.Gameplay.Features.Abilities.OrbitingMushroomAbility),
         typeof(CodeBase.Runtime.Gameplay.Features.Abilities.ParentAbility),
         typeof(CodeBase.Runtime.Gameplay.Features.Abilities.RadialEnergyOrbAbility),
+        typeof(CodeBase.Runtime.Gameplay.Features.Abilities.RecreatedOnUpgrade),
         typeof(CodeBase.Runtime.Gameplay.Features.Abilities.ScatteringFireBallAbility),
         typeof(CodeBase.Runtime.Gameplay.Features.Abilities.SpeedUpAuraAbility),
+        typeof(CodeBase.Runtime.Gameplay.Features.Abilities.UpgradeRequest),
         typeof(CodeBase.Runtime.Gameplay.Features.Abilities.VegetableBoltAbility),
         typeof(CodeBase.Runtime.Gameplay.Features.Armaments.Armament),
+        typeof(CodeBase.Runtime.Gameplay.Features.Armaments.DragonFruitArmament),
         typeof(CodeBase.Runtime.Gameplay.Features.Armaments.EffectSetups),
         typeof(CodeBase.Runtime.Gameplay.Features.Armaments.FollowingProducer),
         typeof(CodeBase.Runtime.Gameplay.Features.Armaments.Processed),
-        typeof(CodeBase.Runtime.Gameplay.Features.Armaments.Scattering),
+        typeof(CodeBase.Runtime.Gameplay.Features.Armaments.ScatteringFireBallArmament),
         typeof(CodeBase.Runtime.Gameplay.Features.Armaments.StatusSetups),
         typeof(CodeBase.Runtime.Gameplay.Features.Armaments.TargetBounceLimit),
         typeof(CodeBase.Runtime.Gameplay.Features.Armaments.TargetPierceLimit),
@@ -256,6 +286,7 @@ public static class GameComponentsLookup {
         typeof(CodeBase.Runtime.Gameplay.Features.Effects.EffectValue),
         typeof(CodeBase.Runtime.Gameplay.Features.Effects.HealEffect),
         typeof(CodeBase.Runtime.Gameplay.Features.Effects.TargetId),
+        typeof(CodeBase.Runtime.Gameplay.Features.Enchants.EnchantHolderComponent),
         typeof(CodeBase.Runtime.Gameplay.Features.Enchants.EnchantTypeIdComponent),
         typeof(CodeBase.Runtime.Gameplay.Features.Enchants.EnchantVisualsComponent),
         typeof(CodeBase.Runtime.Gameplay.Features.Enchants.ExplosiveEnchant),
@@ -267,10 +298,19 @@ public static class GameComponentsLookup {
         typeof(CodeBase.Runtime.Gameplay.Features.Enemies.SpawnTimer),
         typeof(CodeBase.Runtime.Gameplay.Features.Hero.Hero),
         typeof(CodeBase.Runtime.Gameplay.Features.Hero.HeroAnimatorComponent),
+        typeof(CodeBase.Runtime.Gameplay.Features.LevelUp.ExperienceMeterComponent),
+        typeof(CodeBase.Runtime.Gameplay.Features.LevelUp.LevelUp),
         typeof(CodeBase.Runtime.Gameplay.Features.Lifetime.CurrentHp),
         typeof(CodeBase.Runtime.Gameplay.Features.Lifetime.Dead),
         typeof(CodeBase.Runtime.Gameplay.Features.Lifetime.MaxHp),
         typeof(CodeBase.Runtime.Gameplay.Features.Lifetime.ProcessingDeath),
+        typeof(CodeBase.Runtime.Gameplay.Features.Loot.Collected),
+        typeof(CodeBase.Runtime.Gameplay.Features.Loot.Experience),
+        typeof(CodeBase.Runtime.Gameplay.Features.Loot.LootTypeIdComponent),
+        typeof(CodeBase.Runtime.Gameplay.Features.Loot.PickupRadius),
+        typeof(CodeBase.Runtime.Gameplay.Features.Loot.Pullable),
+        typeof(CodeBase.Runtime.Gameplay.Features.Loot.Pulling),
+        typeof(CodeBase.Runtime.Gameplay.Features.Movement.Destination),
         typeof(CodeBase.Runtime.Gameplay.Features.Movement.Direction),
         typeof(CodeBase.Runtime.Gameplay.Features.Movement.MovementAvailable),
         typeof(CodeBase.Runtime.Gameplay.Features.Movement.Moving),
@@ -307,7 +347,6 @@ public static class GameComponentsLookup {
         typeof(CodeBase.Runtime.Gameplay.Features.TargetCollection.Reached),
         typeof(CodeBase.Runtime.Gameplay.Features.TargetCollection.ReadyToCollectTargets),
         typeof(CodeBase.Runtime.Gameplay.Features.TargetCollection.TargetBuffer),
-        typeof(CodeBase.Runtime.Gameplay.Input.AxisInput),
-        typeof(CodeBase.Runtime.Gameplay.Input.Input)
+        typeof(CodeBase.Runtime.Gameplay.Levels.LevelTime)
     };
 }

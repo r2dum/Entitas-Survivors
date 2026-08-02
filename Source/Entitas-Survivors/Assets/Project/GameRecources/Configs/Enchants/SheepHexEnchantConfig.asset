@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: SheepHexEnchantConfig
   m_EditorClassIdentifier: Assembly-CSharp::Project.CodeBase.Gameplay.Features.Enchants.EnchantConfig
   TypeId: 3
+  Icon: {fileID: 21300000, guid: 4dd1ca3b3f4c144438f4dc393a05ddeb, type: 3}
   ViewPrefab: {fileID: 0}
   Radius: 0
   EffectSetups: []

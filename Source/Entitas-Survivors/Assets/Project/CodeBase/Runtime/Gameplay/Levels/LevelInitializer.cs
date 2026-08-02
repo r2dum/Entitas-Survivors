@@ -1,4 +1,4 @@
-﻿using CodeBase.Runtime.Gameplay.Cameras.Provider;
+﻿using CodeBase.Runtime.Gameplay.Levels.Providers;
 using UnityEngine;
 using Zenject;
 
@@ -11,14 +11,10 @@ namespace CodeBase.Runtime.Gameplay.Levels
     private ILevelDataProvider _levelDataProvider;
 
     [Inject]
-    private void Construct(ILevelDataProvider levelDataProvider)
-    {
+    private void Construct(ILevelDataProvider levelDataProvider) =>
       _levelDataProvider = levelDataProvider;
-    }
 
-    public void Initialize()
-    {
+    public void Initialize() =>
       _levelDataProvider.SetStartPoint(_startPoint.position);
-    }
   }
 }

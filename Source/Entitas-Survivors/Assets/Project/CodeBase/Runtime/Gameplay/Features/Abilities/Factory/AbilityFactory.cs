@@ -30,7 +30,7 @@ namespace CodeBase.Runtime.Gameplay.Features.Abilities.Factory
         .PutOnCooldown();
     }
 
-    public GameEntity CreateRadialEnergyOrb(int level)
+    public GameEntity CreateRadialEnergyOrbAbility(int level)
     {
       AbilityLevel abilityLevel = _staticDataService.GetAbilityLevel(AbilityId.RadialEnergyOrb, level);
 
@@ -50,6 +50,7 @@ namespace CodeBase.Runtime.Gameplay.Features.Abilities.Factory
         .AddId(_identifierService.Next())
         .AddAbilityId(AbilityId.OrbitingMushroom)
         .AddCooldown(abilityLevel.Cooldown)
+        .With(x => x.isRecreatedOnUpgrade = true)
         .With(x => x.isOrbitingMushroomAbility = true)
         .PutOnCooldown();
     }
@@ -63,6 +64,18 @@ namespace CodeBase.Runtime.Gameplay.Features.Abilities.Factory
         .AddAbilityId(AbilityId.BouncingRuneStone)
         .AddCooldown(abilityLevel.Cooldown)
         .With(x => x.isBouncingRuneStoneAbility = true)
+        .PutOnCooldown();
+    }
+
+    public GameEntity CreateDragonFruitAbility(int level)
+    {
+      AbilityLevel abilityLevel = _staticDataService.GetAbilityLevel(AbilityId.DragonFruit, level);
+
+      return CreateEntity.Empty()
+        .AddId(_identifierService.Next())
+        .AddAbilityId(AbilityId.DragonFruit)
+        .AddCooldown(abilityLevel.Cooldown)
+        .With(x => x.isDragonFruitAbility = true)
         .PutOnCooldown();
     }
 
@@ -83,6 +96,7 @@ namespace CodeBase.Runtime.Gameplay.Features.Abilities.Factory
       return CreateEntity.Empty()
         .AddId(_identifierService.Next())
         .AddAbilityId(AbilityId.GarlicAura)
+        .With(x => x.isRecreatedOnUpgrade = true)
         .With(x => x.isGarlicAuraAbility = true);
     }
 

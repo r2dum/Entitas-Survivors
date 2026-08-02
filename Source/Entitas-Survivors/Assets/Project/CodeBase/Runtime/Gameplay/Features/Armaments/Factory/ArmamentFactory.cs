@@ -34,6 +34,7 @@ namespace CodeBase.Runtime.Gameplay.Features.Armaments.Factory
 
       return CreateProjectileEntity(at, abilityLevel.ViewPrefab, projectileSetup,
           abilityLevel.EffectSetups, abilityLevel.StatusSetups)
+        .AddTargetCollection(TargetBufferSize)
         .AddParentAbility(AbilityId.VegetableBolt)
         .With(x => x.isRotationAlignedAlongDirection = true);
     }
@@ -45,6 +46,7 @@ namespace CodeBase.Runtime.Gameplay.Features.Armaments.Factory
 
       return CreateProjectileEntity(at, abilityLevel.ViewPrefab, projectileSetup,
           abilityLevel.EffectSetups, abilityLevel.StatusSetups)
+        .AddTargetCollection(TargetBufferSize)
         .AddParentAbility(AbilityId.RadialEnergyOrb);
     }
 
@@ -55,6 +57,7 @@ namespace CodeBase.Runtime.Gameplay.Features.Armaments.Factory
 
       return CreateProjectileEntity(at, abilityLevel.ViewPrefab, projectileSetup,
           abilityLevel.EffectSetups, abilityLevel.StatusSetups)
+        .AddTargetCollection(TargetBufferSize)
         .AddParentAbility(AbilityId.OrbitingMushroom)
         .AddOrbitPhase(phase)
         .AddOrbitRadius(projectileSetup.OrbitRadius);
@@ -67,9 +70,42 @@ namespace CodeBase.Runtime.Gameplay.Features.Armaments.Factory
 
       return CreateProjectileEntity(at, abilityLevel.ViewPrefab, projectileSetup,
           abilityLevel.EffectSetups, abilityLevel.StatusSetups)
+        .AddTargetCollection(TargetBufferSize)
         .AddParentAbility(AbilityId.BouncingRuneStone)
         .AddTargetBounceLimit(projectileSetup.Bounce)
         .With(x => x.isRotationAlignedAlongDirection = true);
+    }
+
+    public GameEntity CreateDragonFruit(int level, Vector3 at)
+    {
+      AbilityLevel abilityLevel = _staticDataService.GetAbilityLevel(AbilityId.DragonFruit, level);
+      ProjectileSetup projectileSetup = abilityLevel.ProjectileSetup;
+
+      return CreateProjectileEntity(at, abilityLevel.ViewPrefab, projectileSetup,
+          abilityLevel.EffectSetups, abilityLevel.StatusSetups)
+        .AddParentAbility(AbilityId.DragonFruit)
+        .With(x => x.isDragonFruitArmament = true)
+        .With(x => x.isRotationAlignedAlongDirection = true);
+    }
+
+    public GameEntity CreateDragonFruitFirePuddle(int level, Vector3 at)
+    {
+      AbilityLevel abilityLevel = _staticDataService.GetAbilityLevel(AbilityId.DragonFruit, level);
+      ChildArmamentSetup childArmamentSetup = abilityLevel.ChildArmamentSetup;
+
+      return CreateEntity.Empty()
+        .AddId(_identifierService.Next())
+        .AddParentAbility(AbilityId.DragonFruit)
+        .AddViewPrefab(childArmamentSetup.ViewPrefab)
+        .AddWorldPosition(at)
+        .AddLayerMask(CollisionLayer.Enemy.AsMask())
+        .AddRadius(childArmamentSetup.AuraSetup.Radius)
+        .AddCollectTargetsInterval(childArmamentSetup.AuraSetup.Interval)
+        .AddCollectTargetsTimer(0f)
+        .AddSelfDestructTimer(childArmamentSetup.AuraSetup.Lifetime)
+        .AddTargetBuffer(new List<int>(TargetBufferSize))
+        .With(x => x.AddEffectSetups(childArmamentSetup.EffectSetups), when: childArmamentSetup.EffectSetups.IsNullOrEmpty() == false)
+        .With(x => x.AddStatusSetups(childArmamentSetup.StatusSetups), when: childArmamentSetup.StatusSetups.IsNullOrEmpty() == false);
     }
 
     public GameEntity CreateScatteringFireBall(int level, Vector3 at)
@@ -79,18 +115,20 @@ namespace CodeBase.Runtime.Gameplay.Features.Armaments.Factory
 
       return CreateProjectileEntity(at, abilityLevel.ViewPrefab, projectileSetup,
           abilityLevel.EffectSetups, abilityLevel.StatusSetups)
+        .AddTargetCollection(TargetBufferSize)
         .AddParentAbility(AbilityId.ScatteringFireBall)
-        .With(x => x.isScattering = true)
+        .With(x => x.isScatteringFireBallArmament = true)
         .With(x => x.isRotationAlignedAlongDirection = true);
     }
 
     public GameEntity CreateScatteringFireBallShard(int level, Vector3 at)
     {
       AbilityLevel abilityLevel = _staticDataService.GetAbilityLevel(AbilityId.ScatteringFireBall, level);
-      ScatteringSetup scatteringSetup = abilityLevel.ScatteringSetup;
+      ChildArmamentSetup childArmamentSetup = abilityLevel.ChildArmamentSetup;
 
-      return CreateProjectileEntity(at, scatteringSetup.ViewPrefab, scatteringSetup.ProjectileSetup,
-          scatteringSetup.EffectSetups, scatteringSetup.StatusSetups)
+      return CreateProjectileEntity(at, childArmamentSetup.ViewPrefab, childArmamentSetup.ProjectileSetup,
+          childArmamentSetup.EffectSetups, childArmamentSetup.StatusSetups)
+        .AddTargetCollection(TargetBufferSize)
         .AddParentAbility(AbilityId.ScatteringFireBall)
         .With(x => x.isRotationAlignedAlongDirection = true);
     }
@@ -143,16 +181,13 @@ namespace CodeBase.Runtime.Gameplay.Features.Armaments.Factory
         .AddWorldPosition(at)
         .AddSpeed(projectileSetup.Speed)
         .AddRadius(projectileSetup.ContactRadius)
-        .AddTargetBuffer(new List<int>(TargetBufferSize))
-        .AddProcessedTargets(new List<int>(TargetBufferSize))
         .AddLayerMask(CollisionLayer.Enemy.AsMask())
-        .AddSelfDestructTimer(projectileSetup.Lifetime)
+        .With(x => x.AddSelfDestructTimer(projectileSetup.Lifetime), when: projectileSetup.Lifetime > 0)
         .With(x => x.AddTargetPierceLimit(projectileSetup.Pierce), when: projectileSetup.Pierce > 0)
         .With(x => x.AddEffectSetups(effectSetups), when: effectSetups.IsNullOrEmpty() == false)
         .With(x => x.AddStatusSetups(statusSetups), when: statusSetups.IsNullOrEmpty() == false)
         .With(x => x.isArmament = true)
         .With(x => x.isMovementAvailable = true)
-        .With(x => x.isReadyToCollectTargets = true)
         .With(x => x.isCollectingTargetsContinuously = true);
     }
 

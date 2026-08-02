@@ -51,6 +51,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - AbilityConfig
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cf8fa9928f02545c3829c249105950c9
+    m_Address: DragonFruitConfig
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - AbilityConfig
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: fae88ad666b2741829f789755019b9a0
     m_Address: GarlicAuraConfig
     m_ReadOnly: 0

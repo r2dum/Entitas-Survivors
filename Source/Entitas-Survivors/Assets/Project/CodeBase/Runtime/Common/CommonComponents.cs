@@ -3,7 +3,7 @@ using Entitas;
 
 namespace CodeBase.Runtime.Common
 {
-  [Game] public class Destructed : IComponent { }
+  [Game, Meta] public class Destructed : IComponent { }
   [Game] public class ViewAddressLoading : IComponent { }
   
   [Game] public class View : IComponent { public IEntityView Value; }

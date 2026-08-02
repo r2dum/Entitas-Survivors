@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using CodeBase.Runtime.Common.Extensions;
+using CodeBase.Runtime.Common.Math;
 using CodeBase.Runtime.Gameplay.Features.Abilities.Configs;
+using CodeBase.Runtime.Gameplay.Features.Abilities.Upgrade;
 using CodeBase.Runtime.Gameplay.Features.Armaments.Factory;
 using CodeBase.Runtime.Gameplay.Features.Cooldowns;
 using CodeBase.Runtime.Gameplay.GameplayStaticData;
@@ -13,16 +15,19 @@ namespace CodeBase.Runtime.Gameplay.Features.Abilities.Systems
   {
     private readonly IGameplayStaticDataService _staticDataService;
     private readonly IArmamentFactory _armamentFactory;
+    private readonly IAbilityUpgradeService _abilityUpgradeService;
 
     private readonly IGroup<GameEntity> _abilities;
     private readonly IGroup<GameEntity> _heroes;
 
     private readonly List<GameEntity> _buffer = new(1);
 
-    public OrbitingMushroomAbilitySystem(GameContext gameContext, IGameplayStaticDataService staticDataService, IArmamentFactory armamentFactory)
+    public OrbitingMushroomAbilitySystem(GameContext gameContext, IGameplayStaticDataService staticDataService,
+      IArmamentFactory armamentFactory, IAbilityUpgradeService abilityUpgradeService)
     {
       _staticDataService = staticDataService;
       _armamentFactory = armamentFactory;
+      _abilityUpgradeService = abilityUpgradeService;
 
       _abilities = gameContext.GetGroup(GameMatcher
         .AllOf(
@@ -40,15 +45,16 @@ namespace CodeBase.Runtime.Gameplay.Features.Abilities.Systems
       foreach (GameEntity ability in _abilities.GetEntities(_buffer))
       foreach (GameEntity hero in _heroes)
       {
-        AbilityLevel abilityLevel = _staticDataService.GetAbilityLevel(AbilityId.OrbitingMushroom, 1);
+        int level = _abilityUpgradeService.GetAbilityLevel(AbilityId.OrbitingMushroom);
+
+        AbilityLevel abilityLevel = _staticDataService.GetAbilityLevel(AbilityId.OrbitingMushroom, level);
         int projectileCount = abilityLevel.ProjectileSetup.ProjectileCount;
+        float[] phases = MathRadial.GetPhases(projectileCount);
 
         for (int i = 0; i < projectileCount; i++)
         {
-          float phase = 2 * Mathf.PI * i / projectileCount;
-
           _armamentFactory
-            .CreateOrbitingMushroom(1, hero.WorldPosition + Vector3.up, phase)
+            .CreateOrbitingMushroom(level, hero.WorldPosition + Vector3.up, phases[i])
             .AddProducerId(hero.Id)
             .AddOrbitCenterPosition(hero.WorldPosition)
             .AddOrbitCenterFollowTarget(hero.Id)

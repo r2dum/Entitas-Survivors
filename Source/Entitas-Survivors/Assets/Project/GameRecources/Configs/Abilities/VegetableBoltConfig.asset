@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AbilityId: 1
   Levels:
-  - Cooldown: 1
+  - Icon: {fileID: -219949570, guid: d5b38a44d661b59469b9795112af70db, type: 3}
+    Description: Adds a vegetable bolt projectile
     ViewPrefab: {fileID: 6295621220853740386, guid: 08ce9f5922001044d87f0b92a159a8c4, type: 3}
+    Cooldown: 1
     EffectSetups:
     - EffectTypeId: 1
       Value: 1
@@ -31,3 +33,108 @@ MonoBehaviour:
     AuraSetup:
       Radius: 0
       Interval: 0
+    ScatteringSetup:
+      ViewPrefab: {fileID: 0}
+      ProjectileSetup:
+        Speed: 0
+        Pierce: 1
+        Bounce: 0
+        ProjectileCount: 1
+        ContactRadius: 0
+        OrbitRadius: 0
+        Lifetime: 0
+      EffectSetups: []
+      StatusSetups: []
+  - Icon: {fileID: -219949570, guid: d5b38a44d661b59469b9795112af70db, type: 3}
+    Description: Reduced cooldown
+    ViewPrefab: {fileID: 6295621220853740386, guid: 08ce9f5922001044d87f0b92a159a8c4, type: 3}
+    Cooldown: 0.7
+    EffectSetups:
+    - EffectTypeId: 1
+      Value: 1
+    StatusSetups: []
+    ProjectileSetup:
+      Speed: 2
+      Pierce: 3
+      Bounce: 0
+      ProjectileCount: 1
+      ContactRadius: 0.1
+      OrbitRadius: 0
+      Lifetime: 3
+    AuraSetup:
+      Radius: 0
+      Interval: 0
+    ScatteringSetup:
+      ViewPrefab: {fileID: 0}
+      ProjectileSetup:
+        Speed: 0
+        Pierce: 1
+        Bounce: 0
+        ProjectileCount: 1
+        ContactRadius: 0
+        OrbitRadius: 0
+        Lifetime: 0
+      EffectSetups: []
+      StatusSetups: []
+  - Icon: {fileID: -219949570, guid: d5b38a44d661b59469b9795112af70db, type: 3}
+    Description: Reduced cooldown
+    ViewPrefab: {fileID: 6295621220853740386, guid: 08ce9f5922001044d87f0b92a159a8c4, type: 3}
+    Cooldown: 0.5
+    EffectSetups:
+    - EffectTypeId: 1
+      Value: 1
+    StatusSetups: []
+    ProjectileSetup:
+      Speed: 2
+      Pierce: 3
+      Bounce: 0
+      ProjectileCount: 1
+      ContactRadius: 0.1
+      OrbitRadius: 0
+      Lifetime: 3
+    AuraSetup:
+      Radius: 0
+      Interval: 0
+    ScatteringSetup:
+      ViewPrefab: {fileID: 0}
+      ProjectileSetup:
+        Speed: 0
+        Pierce: 1
+        Bounce: 0
+        ProjectileCount: 1
+        ContactRadius: 0
+        OrbitRadius: 0
+        Lifetime: 0
+      EffectSetups: []
+      StatusSetups: []
+  - Icon: {fileID: -219949570, guid: d5b38a44d661b59469b9795112af70db, type: 3}
+    Description: Increased speed
+    ViewPrefab: {fileID: 6295621220853740386, guid: 08ce9f5922001044d87f0b92a159a8c4, type: 3}
+    Cooldown: 0.5
+    EffectSetups:
+    - EffectTypeId: 1
+      Value: 1
+    StatusSetups: []
+    ProjectileSetup:
+      Speed: 4
+      Pierce: 3
+      Bounce: 0
+      ProjectileCount: 1
+      ContactRadius: 0.1
+      OrbitRadius: 0
+      Lifetime: 3
+    AuraSetup:
+      Radius: 0
+      Interval: 0
+    ScatteringSetup:
+      ViewPrefab: {fileID: 0}
+      ProjectileSetup:
+        Speed: 0
+        Pierce: 1
+        Bounce: 0
+        ProjectileCount: 1
+        ContactRadius: 0
+        OrbitRadius: 0
+        Lifetime: 0
+      EffectSetups: []
+      StatusSetups: []

@@ -10,7 +10,10 @@ namespace CodeBase.Runtime.Gameplay.Features.Armaments
   [Game] public class TargetBounceLimit : IComponent { public int Value; }
   [Game] public class EffectSetups : IComponent { public List<EffectSetup> Value; }
   [Game] public class StatusSetups : IComponent { public List<StatusSetup> Value; }
-  [Game] public class Scattering : IComponent { }
+  
   [Game] public class Processed : IComponent { }
   [Game] public class FollowingProducer : IComponent { }
+  
+  [Game] public class ScatteringFireBallArmament : IComponent { }
+  [Game] public class DragonFruitArmament : IComponent { }
 }

@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9833df43fb064a3199752651eaefcfde, type: 3}
+  m_Name: DragonFruitConfig
+  m_EditorClassIdentifier: 
+  AbilityId: 9
+  OwnerTypeId: 0
+  Levels:
+  - Icon: {fileID: -2076639608, guid: 979f847434c99422dbd75725acd11063, type: 3}
+    Description: Adds a Dragon Fruit
+    ViewPrefab: {fileID: 1061048380169268590, guid: e3a99bbdfc50d40eaa865852b748cb5f, type: 3}
+    Cooldown: 3
+    EffectSetups: []
+    StatusSetups: []
+    ProjectileSetup:
+      Speed: 2
+      Pierce: 0
+      Bounce: 0
+      ProjectileCount: 1
+      DestinationRadius: 5
+      ContactRadius: 0
+      OrbitRadius: 0
+      Lifetime: 0
+    AuraSetup:
+      Radius: 0
+      Interval: 0
+      Lifetime: 0
+    ChildArmamentSetup:
+      ViewPrefab: {fileID: 7589174097419754033, guid: ecae3613d6cb04594b526e0f239e3b4a, type: 3}
+      ProjectileSetup:
+        Speed: 0
+        Pierce: 0
+        Bounce: 0
+        ProjectileCount: 1
+        DestinationRadius: 0
+        ContactRadius: 0
+        OrbitRadius: 0
+        Lifetime: 0
+      AuraSetup:
+        Radius: 1
+        Interval: 0.25
+        Lifetime: 3
+      EffectSetups:
+      - EffectTypeId: 1
+        Value: 0.25
+      StatusSetups: []

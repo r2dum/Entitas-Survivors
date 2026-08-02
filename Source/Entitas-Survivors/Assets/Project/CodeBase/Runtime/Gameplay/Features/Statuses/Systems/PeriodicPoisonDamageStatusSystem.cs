@@ -1,4 +1,4 @@
-using CodeBase.Runtime.Gameplay.Core.Time;
+using CodeBase.Runtime.Common.Times;
 using CodeBase.Runtime.Gameplay.Features.Effects;
 using CodeBase.Runtime.Gameplay.Features.Effects.Factory;
 using Entitas;

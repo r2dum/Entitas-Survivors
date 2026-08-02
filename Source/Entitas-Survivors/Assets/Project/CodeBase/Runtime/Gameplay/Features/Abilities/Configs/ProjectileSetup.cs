@@ -9,6 +9,7 @@ namespace CodeBase.Runtime.Gameplay.Features.Abilities.Configs
     public int Pierce = 1;
     public int Bounce;
     public int ProjectileCount = 1;
+    public float DestinationRadius;
     public float ContactRadius;
     public float OrbitRadius;
     public float Lifetime;

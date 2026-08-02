@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: LootConfigs
+  m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
+  m_GroupName: LootConfigs
+  m_GUID: c3a963b24a4804156ae1619122716e04
+  m_SerializeEntries:
+  - m_GUID: 671b6f9d9ad1c47739977d88c9a13ed1
+    m_Address: ExplosionEnchantItemLootConfig
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LootConfig
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8aa1d8f71bfd2414ab7419fe80db2eaf
+    m_Address: ExperienceGemLootConfig
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LootConfig
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a72cb8f2749084b30a2abc729be97c52
+    m_Address: SheepHexEnchantItemLootConfig
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LootConfig
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b7736cd27ceda4e64916800bf21056eb
+    m_Address: HealingItemLootConfig
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LootConfig
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bb00e5ba28e554c33ad76ae722cd3c56
+    m_Address: PoisonEnchantItemLootConfig
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - LootConfig
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 9510292c3e59a4eb2b568341a0302e80, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: c80229ab4e84144e0bb0cd763ca9e14f, type: 2}
+    - {fileID: 11400000, guid: 00875f68b861b4246a76c02b6251a76c, type: 2}

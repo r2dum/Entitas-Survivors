@@ -1,8 +1,7 @@
 using System.Collections.Generic;
 using CodeBase.Runtime.Common.Extensions;
+using CodeBase.Runtime.Common.Times;
 using CodeBase.Runtime.Gameplay.Cameras.Provider;
-using CodeBase.Runtime.Gameplay.Core;
-using CodeBase.Runtime.Gameplay.Core.Time;
 using CodeBase.Runtime.Gameplay.Features.Enemies.Configs;
 using CodeBase.Runtime.Gameplay.Features.Enemies.Factory;
 using CodeBase.Runtime.Gameplay.GameplayStaticData;
@@ -20,18 +19,20 @@ namespace CodeBase.Runtime.Gameplay.Features.Enemies.Systems
     private readonly ICameraProvider _cameraProvider;
     private readonly IGameplayStaticDataService _staticDataService;
 
-    private readonly IGroup<GameEntity> _timers;
+    private readonly IGroup<GameEntity> _spawnTimers;
+    private readonly IGroup<GameEntity> _levelTimes;
     private readonly IGroup<GameEntity> _heroes;
 
-    public EnemySpawnSystem(GameContext gameContext, ITimeService timeService,
-      IEnemyFactory enemyFactory, ICameraProvider cameraProvider, IGameplayStaticDataService staticDataService)
+    public EnemySpawnSystem(GameContext gameContext, ITimeService timeService, IEnemyFactory enemyFactory,
+      ICameraProvider cameraProvider, IGameplayStaticDataService staticDataService)
     {
       _timeService = timeService;
       _enemyFactory = enemyFactory;
       _cameraProvider = cameraProvider;
       _staticDataService = staticDataService;
 
-      _timers = gameContext.GetGroup(GameMatcher.SpawnTimer);
+      _spawnTimers = gameContext.GetGroup(GameMatcher.SpawnTimer);
+      _levelTimes = gameContext.GetGroup(GameMatcher.LevelTime);
       _heroes = gameContext.GetGroup(GameMatcher
         .AllOf(
           GameMatcher.Hero,
@@ -40,26 +41,70 @@ namespace CodeBase.Runtime.Gameplay.Features.Enemies.Systems
 
     public void Execute()
     {
-      foreach (GameEntity hero in _heroes)
-      foreach (GameEntity timer in _timers)
+      float levelTime = GetLevelTime();
+      WaveSetup wave = GetWaveByLevelTime(levelTime);
+
+      foreach (GameEntity timer in _spawnTimers)
       {
         timer.ReplaceSpawnTimer(timer.SpawnTimer - _timeService.DeltaTime);
-        if (timer.SpawnTimer <= 0)
+
+        if (timer.SpawnTimer > 0)
+          continue;
+
+        timer.ReplaceSpawnTimer(wave.SpawnInterval);
+
+        List<EnemyConfig> unlockedEnemies = GetUnlockedEnemyConfigs(levelTime);
+
+        foreach (GameEntity hero in _heroes)
         {
-          timer.ReplaceSpawnTimer(GameplayConstants.EnemySpawnTimer);
-          EnemyTypeId selectedEnemyType = SelectEnemyTypeBySpawnWeight();
-          _enemyFactory.CreateEnemy(selectedEnemyType, at: RandomSpawnPosition(hero.WorldPosition));
+          for (int i = 0; i < wave.EnemiesPerSpawn; i++)
+          {
+            EnemyTypeId selectedEnemyType = SelectEnemyTypeBySpawnWeight(unlockedEnemies);
+            _enemyFactory.CreateEnemy(selectedEnemyType, at: RandomSpawnPosition(hero.WorldPosition));
+          }
         }
       }
     }
 
-    private EnemyTypeId SelectEnemyTypeBySpawnWeight()
+    private float GetLevelTime()
     {
-      float totalWeight = 0f;
+      float levelTime = 0f;
 
+      foreach (GameEntity entity in _levelTimes)
+        levelTime = entity.LevelTime;
+
+      return levelTime;
+    }
+
+    private WaveSetup GetWaveByLevelTime(float levelTime)
+    {
+      List<WaveSetup> waves = _staticDataService.GetWavesConfig().Waves;
+      WaveSetup currentWave = waves[0];
+
+      foreach (WaveSetup wave in waves)
+        if (levelTime >= wave.UnlockTime)
+          currentWave = wave;
+
+      return currentWave;
+    }
+
+    private List<EnemyConfig> GetUnlockedEnemyConfigs(float levelTime)
+    {
+      List<EnemyConfig> unlocked = new();
       List<EnemyConfig> enemyConfigs = _staticDataService.GetEnemyConfigs();
 
       foreach (EnemyConfig enemyConfig in enemyConfigs)
+        if (levelTime >= enemyConfig.UnlockTime)
+          unlocked.Add(enemyConfig);
+
+      return unlocked;
+    }
+
+    private EnemyTypeId SelectEnemyTypeBySpawnWeight(List<EnemyConfig> availableConfigs)
+    {
+      float totalWeight = 0f;
+
+      foreach (EnemyConfig enemyConfig in availableConfigs)
         totalWeight += enemyConfig.SpawnWeight;
 
       if (totalWeight == 0f)
@@ -68,7 +113,7 @@ namespace CodeBase.Runtime.Gameplay.Features.Enemies.Systems
       float randomWeightPoint = Random.Range(0f, totalWeight);
       float accumulatedWeight = 0f;
 
-      foreach (EnemyConfig enemyConfig in enemyConfigs)
+      foreach (EnemyConfig enemyConfig in availableConfigs)
       {
         accumulatedWeight += enemyConfig.SpawnWeight;
         if (randomWeightPoint < accumulatedWeight)

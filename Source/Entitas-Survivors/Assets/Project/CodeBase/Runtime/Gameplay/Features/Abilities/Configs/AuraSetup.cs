@@ -7,5 +7,6 @@ namespace CodeBase.Runtime.Gameplay.Features.Abilities.Configs
   {
     public float Radius;
     public float Interval;
+    public float Lifetime;
   }
 }

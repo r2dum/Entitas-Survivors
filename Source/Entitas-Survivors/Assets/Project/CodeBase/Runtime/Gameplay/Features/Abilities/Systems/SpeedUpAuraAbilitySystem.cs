@@ -9,7 +9,6 @@ namespace CodeBase.Runtime.Gameplay.Features.Abilities.Systems
     private readonly IArmamentFactory _armamentFactory;
 
     private readonly IGroup<GameEntity> _abilities;
-    private readonly IGroup<GameEntity> _producers;
 
     private readonly List<GameEntity> _buffer = new(64);
 
@@ -22,23 +21,14 @@ namespace CodeBase.Runtime.Gameplay.Features.Abilities.Systems
           GameMatcher.SpeedUpAuraAbility,
           GameMatcher.ProducerId)
         .NoneOf(GameMatcher.Active));
-
-      _producers = gameContext.GetGroup(GameMatcher
-        .AllOf(
-          GameMatcher.Id,
-          GameMatcher.Enemy));
     }
 
     public void Execute()
     {
       foreach (GameEntity ability in _abilities.GetEntities(_buffer))
-      foreach (GameEntity producer in _producers)
       {
-        if (ability.ProducerId == producer.Id)
-        {
-          _armamentFactory.CreateSpeedUpAura(AbilityId.SpeedUpAura, producer.Id, 1);
-          ability.isActive = true;
-        }
+        _armamentFactory.CreateSpeedUpAura(AbilityId.SpeedUpAura, ability.ProducerId, 1);
+        ability.isActive = true;
       }
     }
   }

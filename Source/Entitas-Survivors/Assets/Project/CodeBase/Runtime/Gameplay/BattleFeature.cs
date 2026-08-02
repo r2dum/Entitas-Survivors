@@ -7,11 +7,14 @@ using CodeBase.Runtime.Gameplay.Features.Effects;
 using CodeBase.Runtime.Gameplay.Features.Enchants;
 using CodeBase.Runtime.Gameplay.Features.Enemies;
 using CodeBase.Runtime.Gameplay.Features.Hero;
+using CodeBase.Runtime.Gameplay.Features.LevelUp;
 using CodeBase.Runtime.Gameplay.Features.Lifetime;
+using CodeBase.Runtime.Gameplay.Features.Loot;
 using CodeBase.Runtime.Gameplay.Features.Movement;
 using CodeBase.Runtime.Gameplay.Features.Statuses;
 using CodeBase.Runtime.Gameplay.Features.TargetCollection;
 using CodeBase.Runtime.Gameplay.Input;
+using CodeBase.Runtime.Gameplay.Levels;
 using CodeBase.Runtime.Infrastructure.EntityView;
 using CodeBase.Runtime.Infrastructure.Systems;
 
@@ -24,9 +27,13 @@ namespace CodeBase.Runtime.Gameplay
       Add(systemFactory.Create<InputFeature>());
       Add(systemFactory.Create<BindViewFeature>());
 
+      Add(systemFactory.Create<LevelFeature>());
       Add(systemFactory.Create<HeroFeature>());
       Add(systemFactory.Create<EnemyFeature>());
       Add(systemFactory.Create<DeathFeature>());
+
+      Add(systemFactory.Create<LootFeature>());
+      Add(systemFactory.Create<LevelUpFeature>());
 
       Add(systemFactory.Create<MovementFeature>());
       Add(systemFactory.Create<AbilityFeature>());

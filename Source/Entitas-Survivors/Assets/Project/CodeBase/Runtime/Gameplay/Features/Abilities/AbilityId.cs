@@ -11,5 +11,6 @@
     ScatteringFireBall = 6,
     HealAura = 7,
     SpeedUpAura = 8,
+    DragonFruit = 9
   }
 }

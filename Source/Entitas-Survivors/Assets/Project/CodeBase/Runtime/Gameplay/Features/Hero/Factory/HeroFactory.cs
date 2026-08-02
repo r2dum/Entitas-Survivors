@@ -18,8 +18,8 @@ namespace CodeBase.Runtime.Gameplay.Features.Hero.Factory
     public GameEntity CreateHero(Vector3 at)
     {
       Dictionary<Stats, float> baseStats = InitStats.EmptyStatDictionary()
-        .With(x => x[Stats.Speed] = 2)
-        .With(x => x[Stats.MaxHp] = 100);
+        .With(x => x[Stats.Speed] = 2f)
+        .With(x => x[Stats.MaxHp] = 100f);
 
       return CreateEntity.Empty()
         .AddId(_identifierService.Next())
@@ -30,6 +30,8 @@ namespace CodeBase.Runtime.Gameplay.Features.Hero.Factory
         .AddSpeed(baseStats[Stats.Speed])
         .AddCurrentHp(baseStats[Stats.MaxHp])
         .AddMaxHp(baseStats[Stats.MaxHp])
+        .AddExperience(0f)
+        .AddPickupRadius(1f)
         .AddViewAddress(AssetAddress.Hero)
         .With(x => x.isHero = true)
         .With(x => x.isTurnedAlongDirection = true)

@@ -1,3 +1,4 @@
+using CodeBase.Runtime.Gameplay.Core;
 using Entitas;
 using UnityEngine;
 
@@ -34,34 +35,12 @@ namespace CodeBase.Runtime.Gameplay.Features.Armaments.Systems
         if (armament.ProcessedTargets.Count > armament.TargetBounceLimit)
           continue;
 
-        GameEntity nearestEnemy = GetNearestEnemy(armament);
+        Vector3 hitEnemyPosition = LastHitEnemyPosition(armament);
+        GameEntity nearestEnemy = _enemies.GetNearestExcept(hitEnemyPosition, armament.ProcessedTargets);
+
         if (nearestEnemy != null)
           armament.ReplaceDirection((nearestEnemy.WorldPosition - armament.WorldPosition).normalized);
       }
-    }
-
-    private GameEntity GetNearestEnemy(GameEntity armament)
-    {
-      Vector3 hitEnemyPosition = LastHitEnemyPosition(armament);
-
-      GameEntity nearestEnemy = null;
-      float minDistanceSqr = float.MaxValue;
-
-      foreach (GameEntity enemy in _enemies)
-      {
-        if (armament.ProcessedTargets.Contains(enemy.Id))
-          continue;
-
-        float distanceSqr = (enemy.WorldPosition - hitEnemyPosition).sqrMagnitude;
-
-        if (distanceSqr < minDistanceSqr)
-        {
-          minDistanceSqr = distanceSqr;
-          nearestEnemy = enemy;
-        }
-      }
-
-      return nearestEnemy;
     }
 
     private Vector3 LastHitEnemyPosition(GameEntity armament)

@@ -13,7 +13,17 @@ MonoBehaviour:
   m_Name: GoblinHealerConfig
   m_EditorClassIdentifier: Assembly-CSharp::CodeBase.Runtime.Gameplay.Features.Enemies.Configs.EnemyConfig
   TypeId: 2
+  ViewAddress:
+    m_AssetGUID: 814ab4eb75f6341fbbb71a525c5669fc
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_SubObjectGUID: 
+    m_EditorAssetChanged: 0
   SpawnWeight: 15
+  UnlockTime: 15
   MaxHp: 1.5
   Speed: 2
   Damage: 0.25
+  AbilitySetups:
+  - AbilityId: 7
+    Level: 1

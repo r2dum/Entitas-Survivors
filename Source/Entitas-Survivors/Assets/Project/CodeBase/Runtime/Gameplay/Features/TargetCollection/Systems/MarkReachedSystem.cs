@@ -24,5 +24,4 @@ namespace CodeBase.Runtime.Gameplay.Features.TargetCollection.Systems
       }
     }
   }
-
 }

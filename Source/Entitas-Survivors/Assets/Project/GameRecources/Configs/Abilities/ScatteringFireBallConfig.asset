@@ -13,9 +13,52 @@ MonoBehaviour:
   m_Name: ScatteringFireBallConfig
   m_EditorClassIdentifier: 
   AbilityId: 6
+  OwnerTypeId: 0
   Levels:
-  - Cooldown: 1
+  - Icon: {fileID: 21300000, guid: bead47d786e844adba7899d02e8851eb, type: 3}
+    Description: Adds a scattering projectile
     ViewPrefab: {fileID: 4082240496846685535, guid: 2d2a7e2864c754904a5c5e66213df307, type: 3}
+    Cooldown: 1
+    EffectSetups:
+    - EffectTypeId: 1
+      Value: 1
+    StatusSetups: []
+    ProjectileSetup:
+      Speed: 2
+      Pierce: 1
+      Bounce: 0
+      ProjectileCount: 1
+      DestinationRadius: 0
+      ContactRadius: 0.2
+      OrbitRadius: 0
+      Lifetime: 3
+    AuraSetup:
+      Radius: 0
+      Interval: 0
+      Lifetime: 0
+    ChildArmamentSetup:
+      ViewPrefab: {fileID: 8684412597090417886, guid: 68770afb80df648489e6cd578c5eaec3, type: 3}
+      ProjectileSetup:
+        Speed: 6
+        Pierce: 1
+        Bounce: 0
+        ProjectileCount: 8
+        DestinationRadius: 0
+        ContactRadius: 0.075
+        OrbitRadius: 0
+        Lifetime: 2
+      AuraSetup:
+        Radius: 0
+        Interval: 0
+        Lifetime: 0
+      EffectSetups:
+      - EffectTypeId: 1
+        Value: 0.25
+      StatusSetups: []
+  - Icon: {fileID: 21300000, guid: bead47d786e844adba7899d02e8851eb, type: 3}
+    Description: Increased speed
+    ViewPrefab: {fileID: 4082240496846685535, guid: 2d2a7e2864c754904a5c5e66213df307, type: 3}
+    Cooldown: 1
     EffectSetups:
     - EffectTypeId: 1
       Value: 1
@@ -25,23 +68,30 @@ MonoBehaviour:
       Pierce: 1
       Bounce: 0
       ProjectileCount: 1
+      DestinationRadius: 0
       ContactRadius: 0.2
       OrbitRadius: 0
       Lifetime: 3
     AuraSetup:
       Radius: 0
       Interval: 0
-    ScatteringSetup:
+      Lifetime: 0
+    ChildArmamentSetup:
       ViewPrefab: {fileID: 8684412597090417886, guid: 68770afb80df648489e6cd578c5eaec3, type: 3}
       ProjectileSetup:
         Speed: 6
         Pierce: 1
         Bounce: 0
         ProjectileCount: 8
+        DestinationRadius: 0
         ContactRadius: 0.075
         OrbitRadius: 0
         Lifetime: 2
+      AuraSetup:
+        Radius: 0
+        Interval: 0
+        Lifetime: 0
       EffectSetups:
       - EffectTypeId: 1
-        Value: 0.25
+        Value: 0.5
       StatusSetups: []

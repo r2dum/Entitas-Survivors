@@ -7,6 +7,7 @@ namespace CodeBase.Runtime.Infrastructure.EntityView.Systems
   public class BindEntityViewPrefabSystem : IExecuteSystem
   {
     private readonly IEntityViewFactory _entityViewFactory;
+
     private readonly IGroup<GameEntity> _entities;
     private readonly List<GameEntity> _buffer = new(32);
 

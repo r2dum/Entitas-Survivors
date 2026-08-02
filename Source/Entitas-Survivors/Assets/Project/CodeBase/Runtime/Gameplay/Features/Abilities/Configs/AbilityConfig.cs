@@ -7,6 +7,7 @@ namespace CodeBase.Runtime.Gameplay.Features.Abilities.Configs
   public class AbilityConfig : ScriptableObject
   {
     public AbilityId AbilityId;
+    public OwnerTypeId OwnerTypeId;
     public List<AbilityLevel> Levels;
   }
 }

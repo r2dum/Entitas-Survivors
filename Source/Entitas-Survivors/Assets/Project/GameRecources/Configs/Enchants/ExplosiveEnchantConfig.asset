@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ExplosiveEnchantConfig
   m_EditorClassIdentifier: Assembly-CSharp::Project.CodeBase.Gameplay.Features.Enchants.EnchantConfig
   TypeId: 2
+  Icon: {fileID: 21300000, guid: cbfa5431ffdac7d49ae5bf38d894904b, type: 3}
   ViewPrefab: {fileID: 6902555966744461871, guid: 1341d554ea3ef934da5f10cbfae07840, type: 3}
   Radius: 1
   EffectSetups:

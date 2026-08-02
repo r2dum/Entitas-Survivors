@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AbilityId: 4
   Levels:
-  - Cooldown: 5
+  - Icon: {fileID: 21300000, guid: 705e2bfad7c17404cbdbbb5f70800c62, type: 3}
+    Description: Three energy orbs
     ViewPrefab: {fileID: 775086241312148475, guid: fb995d274172e4fd6872f421725e3e7a, type: 3}
+    Cooldown: 5
     EffectSetups:
     - EffectTypeId: 1
       Value: 1
@@ -23,10 +25,85 @@ MonoBehaviour:
     ProjectileSetup:
       Speed: 5
       Pierce: 1
-      ProjectileCount: 8
+      Bounce: 0
+      ProjectileCount: 3
       ContactRadius: 0.2
       OrbitRadius: 0
       Lifetime: 3
     AuraSetup:
       Radius: 0
       Interval: 0
+    ScatteringSetup:
+      ViewPrefab: {fileID: 0}
+      ProjectileSetup:
+        Speed: 0
+        Pierce: 1
+        Bounce: 0
+        ProjectileCount: 1
+        ContactRadius: 0
+        OrbitRadius: 0
+        Lifetime: 0
+      EffectSetups: []
+      StatusSetups: []
+  - Icon: {fileID: 21300000, guid: 705e2bfad7c17404cbdbbb5f70800c62, type: 3}
+    Description: Six energy orbs
+    ViewPrefab: {fileID: 775086241312148475, guid: fb995d274172e4fd6872f421725e3e7a, type: 3}
+    Cooldown: 5
+    EffectSetups:
+    - EffectTypeId: 1
+      Value: 1
+    StatusSetups: []
+    ProjectileSetup:
+      Speed: 5
+      Pierce: 1
+      Bounce: 0
+      ProjectileCount: 6
+      ContactRadius: 0.2
+      OrbitRadius: 0
+      Lifetime: 3
+    AuraSetup:
+      Radius: 0
+      Interval: 0
+    ScatteringSetup:
+      ViewPrefab: {fileID: 0}
+      ProjectileSetup:
+        Speed: 0
+        Pierce: 1
+        Bounce: 0
+        ProjectileCount: 1
+        ContactRadius: 0
+        OrbitRadius: 0
+        Lifetime: 0
+      EffectSetups: []
+      StatusSetups: []
+  - Icon: {fileID: 21300000, guid: 705e2bfad7c17404cbdbbb5f70800c62, type: 3}
+    Description: Nine energy orbs
+    ViewPrefab: {fileID: 775086241312148475, guid: fb995d274172e4fd6872f421725e3e7a, type: 3}
+    Cooldown: 5
+    EffectSetups:
+    - EffectTypeId: 1
+      Value: 1
+    StatusSetups: []
+    ProjectileSetup:
+      Speed: 5
+      Pierce: 1
+      Bounce: 0
+      ProjectileCount: 9
+      ContactRadius: 0.2
+      OrbitRadius: 0
+      Lifetime: 3
+    AuraSetup:
+      Radius: 0
+      Interval: 0
+    ScatteringSetup:
+      ViewPrefab: {fileID: 0}
+      ProjectileSetup:
+        Speed: 0
+        Pierce: 1
+        Bounce: 0
+        ProjectileCount: 1
+        ContactRadius: 0
+        OrbitRadius: 0
+        Lifetime: 0
+      EffectSetups: []
+      StatusSetups: []
